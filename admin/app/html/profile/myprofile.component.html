@@ -1,0 +1,96 @@
+<div class="row">
+     <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="profile-left-sidebar-ul margin-top-align">
+            <li><a class="active" (click)="myprofile($event)">Profile</a></li>
+            <li><a (click)="editprofile($event)">Edit Profile</a></li>
+            <li><a (click)="uploadimg($event)">Upload Profile Picture</a></li>
+            <li><a (click)="uploaddocument($event)">Profile Verification</a></li>
+            <li><a (click)="uploadlogo($event)">Agent Logo</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+        <div class="user-profile-dashboard-header-layout margin-top-align">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="user-profile-dashboard-header">User Profile</h2>
+                </div>
+            </div>
+        </div>
+        <div class="user-profile-dashboard-content-layout">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <img class="img-responsive" src="resources/images/profile/150_150/{{dtoUser.entityUser?.img}}">
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <img class="img-responsive" src="resources/images/profile/logo/100_100/{{dtoUser.entityUser?.agentLogo}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>User:</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>{{dtoUser.entityUser?.firstName}} {{dtoUser.entityUser?.lastName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>Email:</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>{{dtoUser.entityUser?.email}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>Telephone:</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>{{dtoUser.entityUser?.cell}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>Business Name</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>{{dtoUser.entityUser?.businessName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>Address</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>{{dtoUser.entityUser?.address}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>Role:</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p>{{rolesString}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h4>Profile Verification</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <p class="fa-success"><i class="fa fa-check" aria-hidden="true"></i></p>
+                            <!--<p class="fa-disable"><i class="fa fa-times" aria-hidden="true"></i> </p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm 12 col-md-12 col-lg-12">
+            <h2 class="bid-history-title">Bid History</h2>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 form-group">
+            <div class="bid-history-table-layout">
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 form-group">
+                        <span class="bids-title">Bids: </span> <span class="bids-content">{{product.totalBids}}</span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                        <span class="bids-time-left-title">Time left: </span> <span class="bids-time-left-content">{{dtoProduct.timeLeft}}</span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm 12 col-md-12 col-lg-12">
+                        <table class="bidders-bid-table">
+                            <thead>
+                                <tr>
+                                    <th>Bidder</th>
+                                    <th>Bid Amount</th>
+                                    <th>Bid Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let bid of productBidList">
+                                    <td data-label="Bidder">{{bid.fullName}}</td>
+                                    <td data-label="Bid Amount">{{bid.price}} £</td>
+                                    <td data-label="Bid Time">{{bid.createdTime}}</td>
+                                </tr>                                
+                            </tbody>                            
+                        </table>
+                        <mat-paginator [length]="length"
+                                    [pageSize]="pageSize"
+                                    [pageSizeOptions]="pageSizeOptions"
+                                    (page)="onPaginateChange($event)">
+                                </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="bid-history-product-item-layout">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h2 class="bid-history-product-item-title">Item details</h2>
+                    </div>
+                </div>
+                <div class="row form-group">
+                   <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                       <a (click)="showAd($event, product.id)"><img class="img-responsive" src="resources/images/product/328_212/{{product.img}}"></a>
+                    </div>
+                   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                       <a (click)="showAd($event, product.id)"><h3 class="bid-history-product-item-description">{{product.title}}</h3></a>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <h3 class="bid-history-product-item-price-title">Item Price: </h3>
+                    </div>
+                   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <h2 class="bid-history-product-item-price-content">{{product?.basePrice}} £</h2>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <h3 class="bid-history-product-item-price-title">Item number: </h3>
+                    </div>
+                   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <h2 class="bid-history-product-item-price-content">{{product.referenceId}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

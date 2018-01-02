@@ -1,0 +1,97 @@
+<!--<div class="container margin-top-bottom-50px">-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+
+            <div class="login-pagelet">
+                <div class="login-block">
+                    <h1>Login</h1>
+                    <div class="row form-group margin-top-align">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <a href="SocialAuthServlet?request=SIGN_IN"><button class="form-control facebook-button"><i class="fa fa-facebook" aria-hidden="true"></i> Log in with Facebook</button></a>
+                        </div>
+                    </div>
+                    <form role="form" (submit)="login($event, username.value, password.value)" >
+                          <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input type="text" #username id="username" class="form-control input-custom-field" placeholder="Your Email"/>
+                                <input type="password" #password id="password" class="form-control input-custom-field" placeholder="Your Password"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <div class="msg">{{msg}}</div>
+                                <div class="error-msg">{{errorMsg}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                                <div class="password-forgotten-anchor">
+                                    <a href="#">Password forgotten</a>
+                                </div>
+                                <!--                                    <div class="sign-up-anchor">
+                                                                        <a [routerLink]="['/signup']" (click)="signup($event)">Click here to Signup</a>
+                                                                    </div>-->
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                                <button type="submit" class="form-control common-custom-button">Login</button> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+        <div class="row">
+            <!-- Success Modal -->
+            <div id="successModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close success-message-close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title text-center" id="myModalLabel">Success Message</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="success-message-content">This is a Success Message</p>
+                        </div>
+                        <div class="modal-footer"> </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Error Modal -->
+            <div id="errorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close error-message-close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title text-center" id="myModalLabel">Error Message</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="error-message-content">This is an Error Message</p>
+                        </div>
+                        <div class="modal-footer"> </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Common Modal -->
+            <div id="commonModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                            <h4 class="modal-title text-center" id="myModalLabel">Common Message</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>This is a Common Message</p>
+                        </div>
+                        <div class="modal-footer"> </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+<!--</div>-->
+
+

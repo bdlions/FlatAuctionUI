@@ -1,0 +1,351 @@
+<div bsModal #productInfoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-header-bg">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Message</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center modal-body-text">
+                {{message}}
+            </div>
+            <div class="modal-footer modal-footer-bg"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="product-info-details-left-panel form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h1 class="product-info-details-left-panel-top-heading">Auction</h1>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="hr"></div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+                        <div class="product-info-details-left-panel-auction-timeblock">
+                            <h5 class="product-info-details-left-panel-timeheader">
+                                Ends within:
+                            </h5>
+                            <h5 class="product-info-details-left-panel-auction-time">
+                                <!--3 hours 25 mins 20 secs-->
+                                {{dtoProduct.timeLeft}}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="product-info-details-left-panel-bid-label">Auto Bid </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
+                        <input type="text" class="form-control product-info-details-input-custom-field" placeholder="Max Bid">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 form-group">
+                        <button class="form-control product-info-details-custom-button">Place Bid !</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="product-info-details-left-panel-bid-label">Bid Directly</div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
+                        <input [(ngModel)]="entityBid.price" type="text" class="form-control product-info-details-input-custom-field" placeholder="Max Bid">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 form-group">
+                        <button type="button"  (click)="postBid($event)" class="form-control product-info-details-custom-button">Place Bid !</button>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <h3 class="product-info-details-left-panel-previous-bids-header">
+                            Current Bids
+                        </h3>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+                        <div class="product-info-details-left-panel-previous-bids">
+                            <a (click)="showBids($event, productInfo.id)">{{productInfo.totalBids}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-info-details-left-panel">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="product-info-details-left-panel-middle-heading">This property is marketed by:</h3>
+                    </div>
+                </div>
+                <div class="row" *ngIf="productInfo?.user?.agentLogo != null">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <img class="img-responsive" src="resources/images/profile/logo/100_100/{{productInfo?.user?.agentLogo}}" alt="Agent Logo">
+                    </div>
+                </div>
+                <div class="row" *ngIf="productInfo?.companyName != null">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="product-info-details-left-panel-company-name">{{productInfo.companyName}}</h3>
+                    </div>
+                </div>
+                <div class="row" *ngIf="productInfo?.user?.businessName != null">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="product-info-details-left-panel-company-address">{{productInfo?.user?.businessName}}</h3>
+                    </div>
+                </div>
+                <div class="row form-group" *ngIf="productInfo?.user?.address != null">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="product-info-details-left-panel-company-address">{{productInfo?.user?.address}}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button class="product-info-details-request-button">Request More Details</button> or
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="product-info-details-contact-number">Call: {{productInfo.phone}}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3 class="product-info-details-left-panel-save-property" ><i class="save-property-heart-icon fa fa-heart-o" aria-hidden="true"></i><a (click)="saveProduct($event, productInfo.id)" class="product-info-details-left-panel-save-property">Save Property</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="product-info-details-right-panel form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <h1 class="product-info-details-right-panel-product-title">{{productInfo.title}}</h1>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <h1 class="product-info-details-right-panel-product-price">Guide Price {{productInfo?.basePrice}} £</h1>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <carousel>
+                            <slide *ngFor="let image of imageArray">
+                                <img class="product-info-details-img" src="resources/images/product/328_212/{{image}}" alt="{{image}}">
+                            </slide>
+                        </carousel>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="tabbed">
+                            <input name="tabbed" id="tabbed1" type="radio" checked>
+                            <section>
+                                <h1>
+                                    <label for="tabbed1">Key Features</label>
+                                </h1>
+                                <div class="tabbed-content">
+                                    <div class="row form-group">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="hr"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h2 class="product-info-details-right-panel-product-availability-header">Availability</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="row">
+                                                <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                    <h3 class="product-info-details-right-panel-product-availability-content">Available From</h3>
+                                                </div>
+                                                <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                    <h3 class="product-info-details-right-panel-product-availability-content">{{productInfo?.availableFrom | date: 'dd-MM-yyyy'}}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                    <h3 class="product-info-details-right-panel-product-availability-content">Available To</h3>
+                                                </div>
+                                                <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                    <h3 class="product-info-details-right-panel-product-availability-content">{{productInfo.ongoing ? "Ongoing": productInfo?.availableTo | date: 'dd-MM-yyyy'}}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="availabilityArray?.length > 0">
+                                                <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                    <h3 class="product-info-details-right-panel-product-availability-content">Availablility</h3>
+                                                </div>
+                                                <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                    <h3 class="product-info-details-right-panel-product-availability-content">
+                                                        <p *ngFor="let availability of availabilityArray">
+                                                            {{availability}}&nbsp;
+                                                    </p>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-availability-content">Minimum term</h3>
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-availability-content">{{productInfo?.minStayTitle}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-availability-content">Maximum term</h3>
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-availability-content">{{productInfo?.maxStayTitle}}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="hr"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h2 class="product-info-details-right-panel-product-amenities-header">Amenities</h2>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngFor="let dtoAmenity of amenityStatusList">
+                                         <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-amenities-content">{{dtoAmenity?.entityAmenity?.title}}</h3>
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-amenities-content">{{dtoAmenity.status}}</h3>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="hr"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h2 class="product-info-details-right-panel-product-tenant-preferences-header">New tenant preferences</h2>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-tenant-preferences-content">Smoking OK?</h3>
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-tenant-preferences-content">{{productInfo?.smokingTitle}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-tenant-preferences-content">Pets OK?</h3>
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-tenant-preferences-content">{{productInfo?.petTitle}}</h3>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-tenant-preferences-content">Occupation</h3>
+                                            </div>
+                                            <div class="col-xs-5 col-sm-5 col-md-3 col-lg-3">
+                                                <h3 class="product-info-details-right-panel-product-tenant-preferences-content">{{productInfo?.occupationTitle}}</h3>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <input name="tabbed" id="tabbed2" type="radio">
+                        <section>
+                            <h1>
+                                <label for="tabbed2">Description</label>
+                            </h1>
+                            <div class="tabbed-content">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="hr"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h2 class="product-info-details-right-panel-product-description-header">Property Description</h2>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h3 class="product-info-details-right-panel-product-description">{{productInfo.description}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <input name="tabbed" id="tabbed3" type="radio">
+                        <section>
+
+                            <h1>
+                                <label for="tabbed3">Message</label>
+                            </h1>
+                            <div class="tabbed-content">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="hr"></div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                                        <span class="message_from_details-label">To: </span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                        <span class="message_from_details_text"> {{productInfo?.firstName}} {{productInfo?.lastName}}</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                                        <span class="message_from_details-label">Subject:</span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                        <span class="message_from_details_text">Re : {{productInfo.title}}</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                                        <span class="message_from_details-label">Message</span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                                        <textarea name="new_message" id="new_message" [(ngModel)]="dtoMessageHeader.entityMessageBody.message" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-offset-8 col-sm-4 col-md-offset-9 col-md-3 col-lg-offset-9 col-lg-3">
+                                        <button type="button" id="submit_message_text" name="submit_message_text" (click)="sendProductMessage($event)" class="form-control common-custom-button">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

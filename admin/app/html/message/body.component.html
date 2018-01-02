@@ -1,0 +1,84 @@
+<div bsModal #showMessageInfoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-header-bg">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Message</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center modal-body-text">
+                {{modalMessage}}
+            </div>
+            <div class="modal-footer modal-footer-bg"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="dashboard-left-sidebar-ul margin-top-align">
+            <li><a (click)="inbox($event)">Inbox</a></li>
+            <li><a (click)="sent($event)">Sent</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="row margin-top-align">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <span class="message_from_details-label">From: </span><span class="message_from_details_text"> {{dtoMessageHeader?.sender?.firstName}} {{dtoMessageHeader?.sender?.lastName}}</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <span class="message_from_details-label">Subject:</span><span class="message_from_details_text"> {{dtoMessageHeader.entityMessageHeader.subject}}</span>
+            </div>
+        </div>
+        <div class="row form-group" *ngFor="let dtoMessageBody of dtoMessageBodyList" >
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="message_from_details_layout_other_user" >
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="message_from_details_text">{{dtoMessageBody.entityMessageBody.message}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="message_from_details_time">{{dtoMessageBody.createdTime}}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="row message_from_details">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <img class="img-responsive" src="resources/images/profile/{{dtoMessageBody?.entityUser?.img ? dtoMessageBody?.entityUser?.img : 'user.jpg'}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="message_from_details_user"> {{dtoMessageBody?.entityUser?.firstName}} {{dtoMessageBody?.entityUser?.lastName}}</div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <mat-paginator [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="onPaginateChange($event)">
+        </mat-paginator>
+        <form role="form" (submit)="sendMessage($event)" method="post">
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <textarea name="message" [(ngModel)]="entityMessageBody.message" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <button type="submit" id="submit_message_text" name="submit_message_text" class="common-custom-button pull-right">Send</button>
+                </div>
+
+            </div>   
+        </form>    
+    </div>
+

@@ -1,0 +1,57 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 25, 2017, 1:12:27 PM
+    Author     : alamgir
+*/
+
+#title-bar {
+    -webkit-app-region: drag;
+    height: 32px;	
+    padding: 0px;
+    margin: 0px;  
+    color: #ADADAD;
+    font-family: sans-serif;
+}
+
+#title {
+    /*position: fixed;*/
+    top: 0px;
+    margin-left: 10px;	
+    line-height: 32px;
+    font-size: 12px;
+    color: #703684;
+    font-weight: bold;
+}
+
+#title-bar-btns {
+    -webkit-app-region: no-drag;
+    /*position: fixed;*/
+    top: 1px;
+    right: 0px;	
+}
+
+#title-bar-btns button {
+    height: 28px;
+    width: 28px;
+    background-color: #703684;
+    border: none;
+    color: #F1F1F1;
+    font-size: 16px;
+}
+
+#min-btn:hover,#min-btn:active,#min-btn:focus,#min-btn:visited{
+    background-color: #EC971F;
+    border: 1px solid #EC971F;
+}
+#max-btn:hover,#max-btn:active,#max-btn:focus,#max-btn:visited{
+    background-color: #449D44;
+    border: 1px solid #449D44;
+}
+#close-btn:hover,#close-btn:active,#close-btn:focus,#close-btn:visited{
+    background-color: #C9302C;
+    border: 1px solid #C9302C;
+}

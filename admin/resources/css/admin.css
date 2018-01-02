@@ -1,0 +1,504 @@
+/*
+Theme Name: Flat Auction
+Athour: A.LK.M. Nazmul Islam
+Version: 1.0
+*/
+
+/* --------------------- Mobile Device -------------------------------------  */
+@media (max-width : 767px) {
+    .header-bg{
+        height: 96px
+    }
+    .header-title{
+        float: left;
+        margin-left: 8px;
+    }
+
+}
+
+/* --------------------- Tablet Device -------------------------------------  */
+@media (min-width : 768px) and (max-width : 991px) {
+    .header-bg{
+        height: 96px
+    }
+    .header-title{
+        float: left;
+        margin-left: 8px;
+    }
+
+}
+/* --------------------- Medium Device -------------------------------------  */
+@media (min-width : 992px) and (max-width : 1199px) {
+    .header-bg{
+        height: 50px
+    }
+    .header-title{
+        float: right;
+    }
+    .container-fluid-adjust{
+        margin-left: -15px!important;  
+        margin-right: 0px!important;  
+    }
+}
+/* --------------------- Large Device -------------------------------------  */
+@media (min-width : 1200px) {
+    .header-bg{
+        height: 50px
+    }
+    .header-title{
+        float: right;
+    }
+    .container-fluid-adjust{
+        margin-left: -15px!important;  
+        margin-right: 0px!important;  
+    }
+}
+
+/* ---------------------------- Header -------------------------------- */
+
+.header-bg{
+    background-color: #fff; 
+}
+.globalHeader-logo.globalHeader-logo--rebranded {
+    height: 60px;
+    width: auto;
+    margin-left: 10px;
+    margin-top: 12px;
+}
+.header-title{
+    font-family: "tw-cen-mt";
+    color: #f06226!important;  
+    font-size: 32px!important;  
+    line-height: 1em!important;  
+    margin-top: 12px!important;
+}
+/* ---------------------------- Footer -------------------------------- */
+.footer-bg{
+    position: fixed;
+    color: #484848;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFF;
+    box-shadow: inset 0 1px 0 #ddd;
+    z-index: 999;
+}
+.footer-border{
+    border-top: 1px solid #ccc;
+    padding: 8px 2px;
+}
+/* ---------------------------- Component -------------------------------- */
+.input-custom-field{
+    border-radius: 0px!important;
+    border: 1px solid #ccc!important;
+    padding: 20px!important;
+}
+.input-custom-field:focus{
+    border: 1px solid #00deb6!important;
+}
+.select-custom-field{
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    padding: 6px 12px;
+}
+.select-custom-field:focus{
+    border: 1px solid #00deb6;
+}
+.common-custom-button{
+    font-family: "tw-cen-mt";
+    background-color: #00deb6;
+    border: 1px solid #00deb6;
+    color: #fff;
+    border-radius: 0px;
+    padding: 6px 12px;
+}
+
+.common-custom-button:focus{
+    border: 1px solid #00deb6;
+}
+.large-button {
+    background-color: #1168b5;
+    color: #fff;
+    border-radius: 0;
+    border: 1px solid #1168b5;
+    text-align: center;
+    text-shadow: none;
+    font-weight: normal;
+    padding: 6px 12px;
+    width: 100%;
+    font-family: "tw-cen-mt";
+    -webkit-appearance: none;
+}
+.large-button:focus {
+    border: 1px solid #1168b5;
+}
+
+.pagination>li>a, .pagination>li>span{
+    border: 1px solid #00deb6;
+    color: #484848;
+}
+.pagination>li>a:hover, .pagination>li>span:hover,.pagination>li>a:focus, .pagination>li>span:focus{
+    border: 1px solid #00deb6;
+    background-color: #00deb6;
+    color: #fff;
+}
+.thead,thead:hover{
+    background-color: #00deb6!important;
+    color: #fff!important;
+}
+/*tr:nth-child(even) {
+    background-color: #1168b5;
+    color: #fff;
+}
+tr:nth-child(odd) {
+    background-color: #00deb6;
+}*/
+tr:hover {
+    cursor: pointer;
+}
+.dropdown-menu>li>a,.dropdown-menu>li>a:focus{
+    font-family: "tw-cen-mt";
+    color: #484848!important;
+}
+.dropdown-menu>li>a:hover{
+    font-family: "tw-cen-mt";
+    background-color: #00deb6!important;
+    color: #fff!important;
+}
+
+
+
+/*input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+    background-color: red!important;
+    color: #f00;
+    font-style: normal;
+} 
+input[type=checkbox]:checked {
+    height: 20px;
+    width: 20px;
+    background-color: red!important;
+    color: #f00;
+    font-style: normal;
+} */
+.checkbox {
+    padding-left: 20px; }
+.checkbox label {
+    display: inline-block;
+    position: relative;
+    padding-left: 10px; }
+.checkbox label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+.checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 0;
+    margin-left: -20px;
+    padding-left: 4px;
+    padding-top: 6px;
+    font-size: 12px;
+    color: #555555;
+}
+.checkbox input[type="checkbox"] {
+    opacity: 0; }
+.checkbox input[type="checkbox"]:focus + label::before {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+.checkbox input[type="checkbox"]:checked + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; }
+.checkbox input[type="checkbox"]:disabled + label {
+    opacity: 0.65; }
+.checkbox input[type="checkbox"]:disabled + label::before {
+    background-color: #eeeeee;
+    cursor: not-allowed; }
+
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+    background-color: #00deb6;;
+    border-color: #00deb6; 
+}
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+.radio {
+    padding-left: 20px; }
+.radio label {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+.radio label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out; }
+.radio label::after {
+    display: inline-block;
+    position: absolute;
+    content: " ";
+    width: 11px;
+    height: 11px;
+    left: 3px;
+    top: 8px;
+    margin-left: -20px;
+    border-radius: 50%;
+    background-color: #00deb6;
+    -webkit-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+    -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
+.radio input[type="radio"] {
+    opacity: 0; }
+.radio input[type="radio"]:focus + label::before {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+.radio input[type="radio"]:checked + label::after {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1); }
+.radio input[type="radio"]:disabled + label {
+    opacity: 0.65; }
+.radio input[type="radio"]:disabled + label::before {
+    cursor: not-allowed; }
+.radio.radio-inline {
+    margin-top: 0; }
+
+
+/* -------------------------------- Common ----------------------------- */
+.margin-top-25px{
+    margin-top: 25px;
+}
+.admin-common-table tr:hover{
+    color: #484848;
+}
+.heading{
+    font-family: "tw-cen-mt";
+    font-size: 28px;
+    color: #216db1;
+    margin-top: 10px !important;
+}
+
+/* -------------------------------- left menu ----------------------------- */
+.left-menu-anchor{
+    text-decoration: none!important; 
+    font-size: 13px; 
+    font-weight: normal;
+    color: #484848!important; 
+}
+.left-menu-anchor h4{
+    color: #484848!important;
+    font-size: 13px !important;
+    line-height: 26px;
+    font-weight: normal !important;
+}
+.admin-custom-panel{
+    cursor: pointer; 
+    border-radius: 0!important; 
+    margin-bottom: -6px!important;
+    width: 100%;
+}
+.admin-custom-panel-heading{
+    padding: 8px!important; 
+    background-color: #F3F3F3!important;
+    border-radius: 0!important; 
+}
+/*.panel-default > .admin-custom-panel-heading{
+    padding: 8px!important; 
+    background-color: #222D32!important;
+    border-radius: 0!important; 
+}*/
+.left-menu-unorder-list{
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0;
+}
+.left-menu-unorder-list a li{
+    width: 100%;
+    background-color: #fff; 
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.left-menu-unorder-list a li:hover{
+    width: 100%;
+    background-color: #f06226;
+    color: #fff;
+    padding: 8px;
+    cursor: pointer;
+}
+.left-menu-unorder-list a,.left-menu-unorder-list a:hover,.left-menu-unorder-list a:focus,.left-menu-unorder-list a:visited{
+    text-decoration: none;
+    cursor: pointer;
+    color: #484848!important;
+}
+.container-fluid > .left-panel-navbar-collapse-custom, .container-fluid > .navbar-header, .container > .left-panel-navbar-collapse-custom, .container > .left-panel-navbar-header-custom {
+    margin-left: -31px!important;
+    margin-right: -31px!important;
+    margin-top: -1px!important;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+.left-panel-navbar-default{
+    background-color: #fff!important;
+    border: 1px solid #fff!important;
+}
+.admin-custom-panel{
+    border-radius: 0px!important;
+    border: 1px solid #216db1!important;
+    border-top-left-radius: 0px!important;
+    border-top-right-radius: 0px!important;
+}
+.admin-custom-panel ul li{
+    margin-right: 5px!important;
+}
+.admin-custom-panel-heading{
+    padding: 0px!important;
+    border-bottom: 1px solid #216db1!important;
+}
+.panel-primary > .admin-custom-panel-heading{
+    font-family: "tw-cen-mt";
+    background-image: linear-gradient(to bottom,#ffffff 0,#ffffff 100%);
+    color: #484848;
+    border-top-left-radius: 0px!important;
+    border-top-right-radius: 0px!important;
+}
+.admin-custom-panel-body{
+    background-color: #E9E9EB!important;
+}
+/* --------------------- Login Box -------------------------------------  */
+
+.login-pagelet{
+    margin-bottom: 1px;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.pagelet_divider{
+    background-color: #ebc27f;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.login-block {
+    width: 100%;
+    padding: 1px 20px;
+    background: #ebc27f;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+.login-facebook-button{
+    font-family: "tw-cen-mt";
+    background-color: #4568b2;
+    border: 1px solid #4568b2;
+    color: #fff;
+    border-radius: 0px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.login-facebook-button:focus{
+    border: 1px solid #4568b2 !important;
+}
+.login-block h1 {
+    font-family: "tw-cen-mt";
+    color: #4568b2!important;
+    font-size: 28px!important;
+    font-weight: bold!important;
+    margin-bottom: 0px!important;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 6px!important
+        border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: "tw-cen-mt";
+    padding: 0 20px 0 50px!important;
+    outline: none;
+}
+
+.login-block input#username {
+    background: #fff url('../images/user.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url('../images/password.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.password-forgotten-anchor{
+    font-family: "tw-cen-mt";
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* --------------------- Product List -------------------------------------  */
+.product-title{
+    font-size: 16px;
+    font-family: "tw-cen-mt";
+    color: #484848;
+    line-height: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: normal;
+}
+.price-title{
+    font-family: "tw-cen-mt";
+    color: #216db1;
+}
+.price-amount{
+    font-family: "tw-cen-mt";
+    color: #f68521;
+    font-size: 16px;
+    margin-top: -2px;
+}
+.option-links i{
+    color: #216db1;
+    font-size: 14px;
+}
+.option-links .option{
+    font-family: "tw-cen-mt";
+    color: #f68521;
+    font-size: 13px;
+    display: inline;
+}
+

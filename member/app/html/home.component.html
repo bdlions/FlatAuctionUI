@@ -1,0 +1,56 @@
+<div class="search-box-layout-bg">
+    <div class="container">
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-7 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8 form-group">
+                <div class="search-box-pagelet form-group">
+                    <form role="form" (submit)="search($event, locationSelector.value)">
+                          <div class="row form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-8 form-group">
+                                <div class="landing-page-search-box-layout">
+                                    <input #locationSelector name="locationSelector" [(ngModel)]="selectedLocation"
+                                        [typeahead]="locationList"
+                                        typeaheadOptionField="searchString"
+                                        class="form-control search-input-field">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 form-group">
+                                <button type="submit" class="form-control common-custom-button non-member-search-input">Search</button>
+                            </div>
+                        </div>
+<!--                        <div class="row form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <h1 for="id" class="text-center landing-page-search-box-header-text">Find your solution</h1>
+                                <h3 for="id" class="text-center landing-page-search-box-small-text">Search properties for sale and to rent</h3>
+                            </div>
+                        </div>-->
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container margin-top-bottom-50px position-adjust">
+    <div class="row form-group">
+        <div *ngFor="let dtoProduct of featuredProductList" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group" >
+            <div class="product-auction-head">
+                <div class="product-auction-img">
+                    <a (click)="showAd($event, dtoProduct.entityProduct.id)"><img class="img-responsive" src="resources/images/product/328_212/{{dtoProduct.entityProduct.img}}"></a>
+                </div>
+                <div class="auction-time text-center">{{dtoProduct.timeLeft}}</div>
+                <div class="product-auction-title margin-bottom-5px">
+                    <a (click)="showAd($event, dtoProduct.entityProduct.id)"><h3>{{dtoProduct.entityProduct.title}}</h3></a>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-4 margin-bottom-15px" >
+                        <button (click)="showAd($event, dtoProduct.entityProduct.id)" class="form-control product-details-bid-button">Bid</button>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-4" >
+                        <div class="form-control product-auction-price">
+                            <span>£{{dtoProduct.entityProduct?.basePrice}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

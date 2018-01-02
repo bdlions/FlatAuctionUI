@@ -1,0 +1,252 @@
+/*
+Theme Name: Flat Auction
+Athour: A.LK.M. Nazmul Islam
+Version: 1.0
+*/
+/* --------------------- Mobile Device -------------------------------------  */
+@media (max-width : 767px) {
+    .sign-up-anchor{
+        float: right;
+    }
+
+}
+
+/* --------------------- Tablet Device -------------------------------------  */
+@media (min-width : 768px) and (max-width : 991px) {
+    .sign-up-anchor{
+        float: right;
+    }
+}
+/* --------------------- Medium Device -------------------------------------  */
+@media (min-width : 992px) and (max-width : 1199px) {
+    .sign-up-anchor{
+        float: right;
+        margin-top: 6px;
+    }
+    .hd-content{
+        margin-left: 10px; 
+    }
+}
+/* --------------------- Large Device -------------------------------------  */
+@media only screen and (min-width : 1200px) {
+    .sign-up-anchor{
+        float: right;
+        margin-top: 6px;
+    }
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -10px;
+}
+.footer,
+.push {
+    height: 10px;
+}
+/* --------------------- Login Box -------------------------------------  */
+
+.login-pagelet{
+    margin-bottom: 1px;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.pagelet_divider{
+    background-color: #ebc27f;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.login-block {
+    width: 100%;
+    padding: 1px 20px;
+    background: #ebc27f;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+.login-facebook-button{
+    font-family: "tw-cen-mt";
+    background-color: #4568b2;
+    border: 1px solid #4568b2;
+    color: #fff;
+    border-radius: 0px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.login-facebook-button:focus{
+    border: 1px solid #4568b2 !important;
+}
+.login-block h1 {
+    font-family: "tw-cen-mt";
+    color: #4568b2!important;
+    font-size: 28px!important;
+    font-weight: bold!important;
+    margin-bottom: 0px!important;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 6px!important
+        border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: "tw-cen-mt";
+    padding: 0 20px 0 50px!important;
+    outline: none;
+}
+
+.login-block input#username {
+    background: #fff url('../images/user.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url('../images/password.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.password-forgotten-anchor{
+    font-family: "tw-cen-mt";
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 5px;
+}
+.facebook-button{
+    font-family: "tw-cen-mt";
+    height: 42px;
+    color: #fff;
+    background: #4568b2;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 150%;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-image: none;
+    font-weight: bold;
+}
+
+/* --------------------- Registration Box -------------------------------------  */
+
+.signup-pagelet{
+    margin-bottom: 1px;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.signup-block {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #4568b2;
+    margin: 0 auto;
+}
+.signup-facebook-button{
+    font-family: "tw-cen-mt";
+    background-color: #4568b2;
+    border: 1px solid #4568b2;
+    color: #fff;
+    border-radius: 0px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.signup-facebook-button:focus{
+    border: 1px solid #4568b2 !important;
+}
+.signup-block h1 {
+    font-family: "tw-cen-mt";
+    color: #4568b2!important;
+    font-size: 24px!important;
+    font-weight: bold!important;
+    text-align: center!important;
+    margin-bottom: 20px!important;
+}
+
+.signup-block .input-custom-field {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: "tw-cen-mt";
+    padding: 0 20px 0 50px!important;
+    outline: none;
+}
+
+/*.signup-block input#username {
+    background: #fff url('../images/user.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.signup-block input#username:focus {
+    background: #fff url('../images/user.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.signup-block input#password {
+    background: #fff url('../images/password.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.signup-block input#password:focus {
+    background: #fff url('../images/password.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}*/
+
+.signup-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+
+
+/* --------------------- Landing Page -------------------------------------  */
+
+#signup{
+    color: #fff!important;
+}
+.error-msg{
+    color: red;
+}
+.msg{
+    color: green;
+}
+.landing-page-margin-adjust{
+    margin-bottom: 320px;
+}
+/* --------------------- Product Info -------------------------------------  */
+
+.message_from_details-label{
+    font-family: "tw-cen-mt";
+    font-weight: normal;
+    color: #2672b7;
+    font-size: 18px;
+    font-weight: normal;
+}
+.message_from_details_text{
+    font-family: "tw-cen-mt";
+    font-size: 16px;
+    color: #000;
+    font-weight: normal;
+}
