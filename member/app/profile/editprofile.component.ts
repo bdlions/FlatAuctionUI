@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {Http} from '@angular/http';
 import {DTOUser} from '../../../app/dto/DTOUser';
 import {EntityUser} from '../../../app/dto/EntityUser';
@@ -15,30 +16,53 @@ import {ACTION} from '../../../app/webservice/ACTION';
 })
 export class EditProfileComponent {
     private webAPIService: WebAPIService;
+    private subscribe:Subscription;
     private dtoUser: DTOUser;
     private roles: EntityRole[];
     private roleList: EntityRole[];
     private tempRoleList: EntityRole[];
     private confirmPassword: string;
     private errorMessage: string = "";
+    private userId: number = 0;
     
-    constructor(public router: Router, public http: Http, webAPIService: WebAPIService) {
+    constructor(public router:Router, public route: ActivatedRoute,  public http: Http, webAPIService: WebAPIService) {
         this.webAPIService = webAPIService;
-        this.dtoUser = new DTOUser();
-        this.dtoUser.entityUser = new EntityUser();
-        this.dtoUser.roles = Array();
-        this.roles = new Array<EntityRole>();
-        this.roleList = new Array<EntityRole>();
-        this.tempRoleList = new Array<EntityRole>();
-        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_USER_INFO), "{}").then(result => {
-            this.dtoUser = result.result;
-            this.roleList = this.dtoUser.roles;
+    }
+    
+    ngOnInit() {
+        this.subscribe = this.route.params.subscribe(params => 
+        {
+            this.dtoUser = new DTOUser();
+            this.dtoUser.entityUser = new EntityUser();
+            this.dtoUser.roles = Array();
+            this.roles = new Array<EntityRole>();
+            this.roleList = new Array<EntityRole>();
+            this.tempRoleList = new Array<EntityRole>();
+            
+            this.userId = params['id'];
+            this.fetchMemberRoles();
         });
+    }
+    
+    fetchMemberRoles()
+    {
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_MEMBER_ROLES), "{}").then(result => {
-            if(result != null && result.list != null)
+            if(result != null && result.success && result.list != null)
             {
                 this.roles = result.list;
+                this.fetchUserInfo();
             }
+        });
+    }
+    
+    fetchUserInfo()
+    {
+        let entityUser: EntityUser = new EntityUser();
+        entityUser.id = this.userId;
+        let requestBody: string = JSON.stringify(entityUser);
+        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_USER_INFO), requestBody).then(result => {
+            this.dtoUser = result.result;
+            this.roleList = this.dtoUser.roles;
         });
     }
     
@@ -119,27 +143,27 @@ export class EditProfileComponent {
     
     myprofile(event: Event) {
         event.preventDefault();
-        this.router.navigate(['myprofile']);
+        this.router.navigate(['myprofile', {id: this.userId }]);
     }
     
     editprofile(event: Event) {
         event.preventDefault();
-        this.router.navigate(['editprofile']);
+        this.router.navigate(['editprofile', {id: this.userId }]);
     }
     
     uploadimg(event: Event) {
         event.preventDefault();
-        this.router.navigate(['uploadimg']);
+        this.router.navigate(['uploadimg', {id: this.userId }]);
     }
     
     uploadlogo(event: Event) {
         event.preventDefault();
-        this.router.navigate(['uploadlogo']);
+        this.router.navigate(['uploadlogo', {id: this.userId }]);
     }
     
     uploaddocument(event: Event) {
         event.preventDefault();
-        this.router.navigate(['uploaddocument']);
+        this.router.navigate(['uploaddocument', {id: this.userId }]);
     }
     
     /*uploadimg(event: Event) {

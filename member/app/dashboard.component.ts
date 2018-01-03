@@ -38,7 +38,7 @@ export class MemberDashBoardComponent {
     myprofile(event: Event)
     {
         event.preventDefault();
-        this.router.navigate(["myprofile"]);
+        this.router.navigate(["myprofile", {id: 0 }]);
     }
     
     basicsearch(event: Event)

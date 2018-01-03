@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Http} from '@angular/http';
+import {EntityRole} from './../dto/EntityRole';
 import {WebAPIService} from './../webservice/web-api-service';
 import {PacketHeaderFactory} from './../webservice/PacketHeaderFactory';
 import {ACTION} from './../webservice/ACTION';
@@ -58,9 +59,10 @@ export class LoginComponent {
                     localStorage.setItem("username", username);
                     localStorage.setItem("password", password);
                     localStorage.setItem("sessionId", result.sessionId);
-
-                    window.location.replace("/");
-                    window.location.href = "member.html";
+                    
+                    this.fetchUserRoles();
+                    //window.location.replace("/");
+                    //window.location.href = "member.html";
                 }
                 else{
                     localStorage.removeItem("sessionId");
@@ -78,6 +80,39 @@ export class LoginComponent {
         });       
         
     }
+    
+    fetchUserRoles()
+    {
+        let isAdmin: boolean;
+        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_USER_ROLES), "{}").then(result => {
+            if (result != null && result.success)
+            {
+                let roles: EntityRole[] = result.list;
+                if (roles != null && roles.length > 0)
+                {
+                    for (let counter = 0; counter < roles.length; counter++)
+                    {
+                        if (roles[counter].id == 1)
+                        {
+                            //admin has role id 1
+                            isAdmin = true;
+                        }
+                    }
+                }  
+                if (isAdmin)
+                {
+                    window.location.replace("/");
+                    window.location.href = "admin.html";
+                }   
+                else
+                {
+                    window.location.replace("/");
+                    window.location.href = "member.html";
+                }           
+            }            
+        });
+    }
+    
 }
 
 

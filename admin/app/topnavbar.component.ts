@@ -19,16 +19,17 @@ export class TopNavbarComponent {
         this.webAPIService = webAPIService;
     }
     
-    goToMyhome(event: Event)
-    {
-        event.preventDefault();
-        this.router.navigate(["home"]);
-    }
-    
     dashboard(event: Event)
     {
         event.preventDefault();
         this.router.navigate(["dashboard"]);
+    }
+    
+    
+    /*goToMyhome(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["home"]);
     }
     
     goToAboutus(event: Event)
@@ -71,7 +72,7 @@ export class TopNavbarComponent {
     {
         event.preventDefault();
         this.router.navigate(["basicsearch"]);
-    }
+    }*/
     
     logout(event: Event) {
         event.preventDefault();

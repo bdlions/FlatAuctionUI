@@ -114,6 +114,9 @@ export class PacketHeaderFactory {
             case ACTION.FETCH_MESSAGE_HEADER:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break; 
+            case ACTION.FETCH_USER_ROLES:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break; 
                             
             case ACTION.UPDATE_USER_INFO:
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
@@ -131,46 +134,29 @@ export class PacketHeaderFactory {
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
                 break;
             
-            
-            
-            
-            
-            
-            
-            
-            
+            //Only For Admin
             case ACTION.FETCH_USER_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
             case ACTION.FETCH_PRODUCT_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
             case ACTION.FETCH_RADIUS_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
-            case ACTION.FETCH_PRODUCT_TYPE_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_PRODUCT_SIZE_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_PRODUCT_CATEGORY_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            
-            case ACTION.FETCH_STAY_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_SMOKING_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_OCCUPATION_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
             case ACTION.FETCH_GENDER_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_ROOM_SIZE_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
             case ACTION.FETCH_DURATION_LIST:
@@ -182,17 +168,7 @@ export class PacketHeaderFactory {
             case ACTION.FETCH_MAX_PRICE_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
-            case ACTION.FETCH_PRODUCT_INFO:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            
             case ACTION.FETCH_ACCOUNT_SETTING_FA:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_MESSAGE_INBOX_LIST:
-                packetHeader.requestType = REQUEST_TYPE.REQUEST
-                break;
-            case ACTION.FETCH_MESSAGE_SENT_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
             case ACTION.FETCH_STAT_LIST:

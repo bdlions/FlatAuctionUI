@@ -8,6 +8,20 @@ import {enableProdMode} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 
+import {AdminDashBoardComponent} from './dashboard.component';
+
+import {UserListComponent} from './user/userlist.component';
+import {MyProfileComponent} from '../../member/app/profile/myprofile.component';
+import {EditProfileComponent} from '../../member/app/profile/editprofile.component';
+import {UploadImgComponent} from '../../member/app/profile/uploadimg.component';
+import {UploadLogoComponent} from '../../member/app/profile/uploadlogo.component';
+import {UploadDocumentComponent} from '../../member/app/profile/uploaddocument.component';
+
+import {AdvertListComponent} from './advert/advertlist.component';
+import {ProductComponent} from '../../app/public/product.component';
+import {ManageAdComponent} from '../../member/app/advert/managead.component';
+import {BidsComponent} from '../../app/public/bids.component';
+
 import {AboutComponent} from '../../app/common/about.component';
 import {ContactComponent} from '../../app/common/contact.component';
 import {FaqComponent} from '../../app/common/faq.component';
@@ -16,25 +30,13 @@ import {TermsComponent} from '../../app/common/terms.component';
 
 import {HomeComponent} from './home.component';
 import {SearchComponent} from '../../app/public/search.component';
-import {MemberDashBoardComponent} from './dashboard.component';
-
-import {ManageAdComponent} from './advert/managead.component';
 import {MyAdsComponent} from './advert/myads.component';
 import {SavedAdsComponent} from './advert/savedads.component';
-import {ProductComponent} from '../../app/public/product.component';
-import {BidsComponent} from '../../app/public/bids.component';
-
 import {AccountComponent} from './account.component';
 
 import {InboxComponent} from './message/inbox.component';
 import {SentComponent} from './message/sent.component';
 import {BodyComponent} from './message/body.component';
-
-import {MyProfileComponent} from './profile/myprofile.component';
-import {EditProfileComponent} from './profile/editprofile.component';
-import {UploadImgComponent} from './profile/uploadimg.component';
-import {UploadLogoComponent} from './profile/uploadlogo.component';
-import {UploadDocumentComponent} from './profile/uploaddocument.component';
 
 import {BasicSearchComponent} from './search/basicsearch.component';
 import {AdvancedSearchComponent} from './search/advancedsearch.component';
@@ -95,7 +97,47 @@ import {
 const appRoutes: Routes = [
     {
         path: '',
-        component: MemberDashBoardComponent
+        component: AdminDashBoardComponent
+    },
+    {
+        path: 'userlist',
+        component: UserListComponent
+    },
+    {
+        path: 'myprofile',
+        component: MyProfileComponent
+    },
+    {
+        path: 'editprofile',
+        component: EditProfileComponent
+    },
+    {
+        path: 'uploadimg',
+        component: UploadImgComponent
+    },
+    {
+        path: 'uploadlogo',
+        component: UploadLogoComponent
+    },
+    {
+        path: 'uploaddocument',
+        component: UploadDocumentComponent
+    },
+    {
+        path: 'advertlist',
+        component: AdvertListComponent
+    },
+    {
+        path: 'showad',
+        component: ProductComponent
+    },
+    {
+        path: 'managead',
+        component: ManageAdComponent
+    },
+    {
+        path: 'showbids',
+        component: BidsComponent
     },
     {
         path: 'about',
@@ -127,19 +169,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'dashboard',
-        component: MemberDashBoardComponent
-    },
-    {
-        path: 'showad',
-        component: ProductComponent
-    },
-    {
-        path: 'showbids',
-        component: BidsComponent
-    },
-    {
-        path: 'managead',
-        component: ManageAdComponent
+        component: AdminDashBoardComponent
     },
     {
         path: 'myads',
@@ -166,26 +196,6 @@ const appRoutes: Routes = [
         component: AccountComponent
     },
     {
-        path: 'myprofile',
-        component: MyProfileComponent
-    },
-    {
-        path: 'editprofile',
-        component: EditProfileComponent
-    },
-    {
-        path: 'uploadimg',
-        component: UploadImgComponent
-    },
-    {
-        path: 'uploadlogo',
-        component: UploadLogoComponent
-    },
-    {
-        path: 'uploaddocument',
-        component: UploadDocumentComponent
-    },
-    {
         path: 'basicsearch',
         component: BasicSearchComponent
     },
@@ -195,7 +205,7 @@ const appRoutes: Routes = [
     },
     {
         path: '**',
-        component: MemberDashBoardComponent
+        component: AdminDashBoardComponent
     },
 
 ];
@@ -271,6 +281,10 @@ enableProdMode();
         /**
          * All are components of the template
          */
+        AdminDashBoardComponent,
+        UserListComponent,
+        AdvertListComponent,         
+         
         AboutComponent,
         ContactComponent,
         FaqComponent,
@@ -278,8 +292,7 @@ enableProdMode();
         TermsComponent,
         
         HomeComponent,
-        SearchComponent,
-        MemberDashBoardComponent,
+        SearchComponent,        
         
         ManageAdComponent,
         MyAdsComponent,

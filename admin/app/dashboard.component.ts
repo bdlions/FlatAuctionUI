@@ -7,17 +7,27 @@ import {Http} from '@angular/http';
     selector: 'app',
     templateUrl: 'admin/app/html/dashboard.component.html'
 })
-export class MemberDashBoardComponent {
-    
-    
-    constructor(public router: Router, public http: Http) {
-        
+export class AdminDashBoardComponent 
+{   
+    constructor(public router: Router, public http: Http) 
+    {        
 
     }
 
+    userList(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["userlist"]);
+    }
+
+    advertList(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["advertlist"]);
+    }
     
     
-    myads(event: Event)
+    /*myads(event: Event)
     {
         event.preventDefault();
         this.router.navigate(["myads"]);
@@ -45,6 +55,6 @@ export class MemberDashBoardComponent {
     {
         event.preventDefault();
         this.router.navigate(["basicsearch"]);
-    }
+    }*/
 }
 
