@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 //import {Http} from '@angular/http';
-//import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 //import {Product} from '../dto/Product';
 import {EntityProduct} from '../../../app/dto/EntityProduct';
+import {EntityRole} from '../../../app/dto/EntityRole';
 import {DTOProduct} from '../../../app/dto/DTOProduct';
 import {WebAPIService} from '../../../app/webservice/web-api-service';
 import {PacketHeaderFactory} from '../../../app/webservice/PacketHeaderFactory';
@@ -18,9 +19,11 @@ import {PageEvent} from '@angular/material';
 export class MyAdsComponent{
     private webAPIService: WebAPIService;
     //private productList: Product[];
+    private isAdmin: boolean = false;
     private productList: EntityProduct[];
     private reqDTOProduct: DTOProduct;
-    //private subscribe:Subscription;
+    private subscribe:Subscription;
+    private userId: number = 0;
     //private id:number;
     
     // MatPaginator Inputs
@@ -30,10 +33,41 @@ export class MyAdsComponent{
         
     constructor(public router:Router, public route: ActivatedRoute, webAPIService: WebAPIService) {        
         this.webAPIService = webAPIService;
-        this.reqDTOProduct = new DTOProduct();
-        this.reqDTOProduct.offset = 0;
-        this.reqDTOProduct.limit = 10;
-        this.fetchUserProductList();
+        this.fetchUserRoles();
+    }
+    
+    ngOnInit() {
+        this.subscribe = this.route.params.subscribe(params => 
+        {
+            this.userId = params['id'];
+            this.reqDTOProduct = new DTOProduct();
+            this.reqDTOProduct.entityProduct = new EntityProduct();
+            this.reqDTOProduct.entityProduct.userId = this.userId;
+            this.reqDTOProduct.offset = 0;
+            this.reqDTOProduct.limit = 10;
+            this.fetchUserProductList();
+        });
+    }
+    
+    fetchUserRoles()
+    {
+        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_USER_ROLES), "{}").then(result => {
+            if (result != null && result.success)
+            {
+                let roles: EntityRole[] = result.list;
+                if (roles != null && roles.length > 0)
+                {
+                    for (let counter = 0; counter < roles.length; counter++)
+                    {
+                        if (roles[counter].id == 1)
+                        {
+                            //admin has role id 1
+                            this.isAdmin = true;
+                        }
+                    }
+                }         
+            }            
+        });
     }
     
     fetchUserProductList()
@@ -58,7 +92,7 @@ export class MyAdsComponent{
     
     myAds(event: Event) {
         event.preventDefault();
-        this.router.navigate(['myads']);
+        this.router.navigate(['myads', {id: this.userId }]);
     }
     
     showAd(event: Event, id: number){
@@ -68,7 +102,7 @@ export class MyAdsComponent{
     
     savedAds(event: Event) {
         event.preventDefault();
-        this.router.navigate(['savedads']);
+        this.router.navigate(['savedads', {id: this.userId }]);
     }
     
     /*public myproduct(event: Event, id: number){

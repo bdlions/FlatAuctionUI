@@ -21,6 +21,8 @@ import {AdvertListComponent} from './advert/advertlist.component';
 import {ProductComponent} from '../../app/public/product.component';
 import {ManageAdComponent} from '../../member/app/advert/managead.component';
 import {BidsComponent} from '../../app/public/bids.component';
+import {MyAdsComponent} from '../../member/app/advert/myads.component';
+import {SavedAdsComponent} from '../../member/app/advert/savedads.component';
 
 import {AboutComponent} from '../../app/common/about.component';
 import {ContactComponent} from '../../app/common/contact.component';
@@ -30,8 +32,7 @@ import {TermsComponent} from '../../app/common/terms.component';
 
 import {HomeComponent} from './home.component';
 import {SearchComponent} from '../../app/public/search.component';
-import {MyAdsComponent} from './advert/myads.component';
-import {SavedAdsComponent} from './advert/savedads.component';
+
 import {AccountComponent} from './account.component';
 
 import {InboxComponent} from './message/inbox.component';
@@ -140,6 +141,14 @@ const appRoutes: Routes = [
         component: BidsComponent
     },
     {
+        path: 'myads',
+        component: MyAdsComponent
+    },
+    {
+        path: 'savedads',
+        component: SavedAdsComponent
+    },
+    {
         path: 'about',
         component: AboutComponent
     },
@@ -170,14 +179,6 @@ const appRoutes: Routes = [
     {
         path: 'dashboard',
         component: AdminDashBoardComponent
-    },
-    {
-        path: 'myads',
-        component: MyAdsComponent
-    },
-    {
-        path: 'savedads',
-        component: SavedAdsComponent
     },
     {
         path: 'inbox',

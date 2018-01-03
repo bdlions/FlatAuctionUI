@@ -46,10 +46,16 @@ export class UserListComponent{
         this.fetchUserList();
     }
     
-    manageUser(event: Event, id: number)
+    userProfile(event: Event, id: number)
     {
         event.preventDefault();
         this.router.navigate(["myprofile", {id: id }]);
+    }
+    
+    userAds(event: Event, id: number)
+    {
+        event.preventDefault();
+        this.router.navigate(["myads", {id: id }]);
     }
     
     /*manageAd(event: Event, id: number){

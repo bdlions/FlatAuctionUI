@@ -17,15 +17,15 @@
                  <div class="my-ads-product-layout">
                     <div class="row form-group">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2 class="my-ads-product-title"><a (click)="manageUser($event, user.id)">{{user.firstName}} {{user.lastName}}</a></h2>
+                            <h2 class="my-ads-product-title"><a (click)="userProfile($event, user.id)">{{user.firstName}} {{user.lastName}}</a></h2>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
-                            <a (click)="manageUser($event, user.id)"><img class="img-responsive image80x50" src="resources/images/profile/150_150/{{user.img ? user.img : 'user.jpg'}}" alt="User Image"></a>
+                            <a (click)="userProfile($event, user.id)"><img class="img-responsive image80x50" src="resources/images/profile/150_150/{{user.img ? user.img : 'user.jpg'}}" alt="User Image"></a>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
-                            <a (click)="manageUser($event, user.id)"><div class="my-ads-product-description">{{user.email}}</div></a>
+                            <a (click)="userProfile($event, user.id)"><div class="my-ads-product-description">{{user.email}}</div></a>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -51,8 +51,14 @@
                         </div>
                     </div>
                     <div class="row form-group my-ads-option-links">
-                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+<!--                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i><a (click)="manageUser($event, user.id)"><div class="option"> Edit</div></a>
+                        </div>-->
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i><a (click)="userProfile($event, user.id)"><div class="option"> Profile</div></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i><a (click)="userAds($event, user.id)"><div class="option"> Ads</div></a>
                         </div>
                     </div>
                 </div>

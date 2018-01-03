@@ -46,7 +46,7 @@ export class TopNavbarComponent {
     myads(event: Event)
     {
         event.preventDefault();
-        this.router.navigate(["myads"]);
+        this.router.navigate(["myads", {id: 0 }]);
     }
     
     inbox(event: Event)

@@ -20,7 +20,7 @@ export class MemberDashBoardComponent {
     myads(event: Event)
     {
         event.preventDefault();
-        this.router.navigate(["myads"]);
+        this.router.navigate(["myads", {id: 0 }]);
     }
     
     inbox(event: Event)

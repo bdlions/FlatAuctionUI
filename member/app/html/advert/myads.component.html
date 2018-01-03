@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
         <ul class="dashboard-left-sidebar-ul margin-top-align">
-            <li><a (click)="manageAd($event, 0)">Create Ads</a></li>
+            <li *ngIf='!isAdmin'><a (click)="manageAd($event, 0)">Create Ads</a></li>
             <li><a class="active" (click)="myAds($event)">My Ads</a></li>
             <li><a (click)="savedAds($event)">Saved Ads</a></li>
 <!--            <li><ul class="nav nav-pills nav-stacked" id="stacked-menu">
