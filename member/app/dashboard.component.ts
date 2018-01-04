@@ -10,9 +10,14 @@ import {Http} from '@angular/http';
 export class MemberDashBoardComponent {
     
     
-    constructor(public router: Router, public http: Http) {
-        
-
+    constructor(public router: Router, public http: Http) 
+    {
+        //if no session id then redirct to landing page
+        let sessionId = localStorage.getItem("sessionId");
+        if (sessionId == null || sessionId == ""){
+            window.location.replace("/");
+            window.location.href = "index.html";
+        }    
     }
 
     
@@ -26,7 +31,7 @@ export class MemberDashBoardComponent {
     inbox(event: Event)
     {
         event.preventDefault();
-        this.router.navigate(["inbox"]);
+        this.router.navigate(["inbox", {id: 0 }]);
     }
     
     account(event: Event)

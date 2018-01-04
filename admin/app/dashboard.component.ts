@@ -11,7 +11,12 @@ export class AdminDashBoardComponent
 {   
     constructor(public router: Router, public http: Http) 
     {        
-
+        //if no session id then redirct to landing page
+        let sessionId = localStorage.getItem("sessionId");
+        if (sessionId == null || sessionId == ""){
+            window.location.replace("/");
+            window.location.href = "index.html";
+        }
     }
 
     userList(event: Event)

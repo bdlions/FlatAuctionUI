@@ -52,7 +52,7 @@ export class TopNavbarComponent {
     inbox(event: Event)
     {
         event.preventDefault();
-        this.router.navigate(["inbox"]);
+        this.router.navigate(["inbox", {id: 0 }]);
     }
     
     account(event: Event)

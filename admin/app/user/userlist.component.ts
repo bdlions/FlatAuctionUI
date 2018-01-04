@@ -58,6 +58,12 @@ export class UserListComponent{
         this.router.navigate(["myads", {id: id }]);
     }
     
+    userInbox(event: Event, id: number)
+    {
+        event.preventDefault();
+        this.router.navigate(["inbox", {id: id }]);
+    }
+    
     /*manageAd(event: Event, id: number){
         event.preventDefault();
         this.router.navigate(['managead', {id: id }]);

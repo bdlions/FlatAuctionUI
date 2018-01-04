@@ -23,6 +23,7 @@ export class BodyComponent {
     private dtoMessageBody: DTOMessageBody;
     private dtoMessageBodyList: DTOMessageBody[];
     private messageHeaderId: number;
+    private userId: number = 0;
     private dtoMessageHeader: DTOMessageHeader;
     private entityMessageHeader: EntityMessageHeader;
     private entityMessageBody: EntityMessageBody;
@@ -40,6 +41,7 @@ export class BodyComponent {
     ngOnInit() {
         this.subscribe = this.route.params.subscribe(params => {
             this.messageHeaderId = params['id'];
+            this.userId = params['userId'];
             if(this.messageHeaderId > 0)
             {
                 this.dtoMessageBodyList = Array();
@@ -91,6 +93,7 @@ export class BodyComponent {
     sendMessage(event:PageEvent)
     {
         this.entityMessageBody.messageHeaderId = this.messageHeaderId;
+        this.entityMessageBody.userId = this.userId;
         let requestBody: string = JSON.stringify(this.entityMessageBody);
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.ADD_MESSAGE_BODY), requestBody).then(result => {
             this.entityMessageBody = new EntityMessageBody();
@@ -106,12 +109,12 @@ export class BodyComponent {
     
     inbox(event: Event) {
         event.preventDefault();
-        this.router.navigate(['inbox']);
+        this.router.navigate(['inbox', {id: this.userId }]);
     }
     
     sent(event: Event) {
         event.preventDefault();
-        this.router.navigate(['sent']);
+        this.router.navigate(['sent', {id: this.userId }]);
     }
 }
 

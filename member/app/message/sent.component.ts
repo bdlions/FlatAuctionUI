@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {EntityUser} from '../../../app/dto/EntityUser';
 import {DTOMessageHeader} from '../../../app/dto/DTOMessageHeader';
 import {WebAPIService} from '../../../app/webservice/web-api-service';
 import {PacketHeaderFactory} from '../../../app/webservice/PacketHeaderFactory';
@@ -14,6 +15,8 @@ import {PageEvent} from '@angular/material';
 })
 export class SentComponent {
     private webAPIService: WebAPIService;
+    private subscribe:Subscription;
+    private userId: number = 0;
     private dtoMessageHeader: DTOMessageHeader;
     private dtoMessageHeaderList: DTOMessageHeader[];
     
@@ -23,11 +26,20 @@ export class SentComponent {
     pageSizeOptions = [5, 10];
     constructor(public router:Router, public route: ActivatedRoute, webAPIService: WebAPIService) {       
         this.webAPIService = webAPIService;
-        this.dtoMessageHeaderList = Array();
-        this.dtoMessageHeader = new DTOMessageHeader();
-        this.dtoMessageHeader.offset = 0;
-        this.dtoMessageHeader.limit = 10;
-        this.fetchMessageSentList();
+        this.dtoMessageHeaderList = Array();        
+    }
+
+    ngOnInit() {
+        this.subscribe = this.route.params.subscribe(params => 
+        {
+            this.userId = params['id'];
+            this.dtoMessageHeader = new DTOMessageHeader();
+            this.dtoMessageHeader.sender = new EntityUser();
+            this.dtoMessageHeader.offset = 0;
+            this.dtoMessageHeader.limit = 10;
+            this.dtoMessageHeader.sender.id = this.userId;
+            this.fetchMessageSentList();
+        });
     }
 
     fetchMessageSentList()
@@ -47,16 +59,16 @@ export class SentComponent {
     
     public showMessageBodyList(event: Event, id: number)
     {
-        this.router.navigate(['showmessages', {id: id }]);
+        this.router.navigate(['showmessages', {id: id , userId: this.userId}]);
     }
     
     inbox(event: Event) {
         event.preventDefault();
-        this.router.navigate(['inbox']);
+        this.router.navigate(['inbox', {id: this.userId }]);
     }
     
     sent(event: Event) {
         event.preventDefault();
-        this.router.navigate(['sent']);
+        this.router.navigate(['sent', {id: this.userId }]);
     }
 }
