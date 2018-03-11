@@ -127,11 +127,21 @@ export class SignupComponent {
             this.errorMessage = "Password and Confirm Password must be same.";
             return;
         }
+        if (this.roleList == null || this.roleList.length == 0)
+        {
+            this.errorMessage = "Role is required.";
+            return;
+        }
+        if (this.dtoUser.entityUser.genderId == null || this.dtoUser.entityUser.genderId == 0)
+        {
+            this.errorMessage = "Gender is required.";
+            return;
+        }
         this.dtoUser.roles = this.roleList;
         let requestBody: string = JSON.stringify(this.dtoUser);
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.SIGN_UP), requestBody).then(result =>{
             if (result != null && result.success){
-                localStorage.setItem("msg", "Account created successfully. Please login.");
+                localStorage.setItem("msg", result.message);
                 this.router.navigate(["login"]);
             }
             else if (result != null && !result.success)
