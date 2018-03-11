@@ -133,7 +133,7 @@
                         <h1 class="product-info-details-right-panel-product-title">{{productInfo.title}}</h1>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                        <h1 class="product-info-details-right-panel-product-price">Guide Price {{productInfo?.basePrice}} £</h1>
+                        <h1 class="product-info-details-right-panel-product-price">Guide Price £{{productInfo?.basePrice | number:'.2-2'}} </h1>
                     </div>
                 </div>
                 <div class="row form-group">
