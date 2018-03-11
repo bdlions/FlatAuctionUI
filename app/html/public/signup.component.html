@@ -37,6 +37,58 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        <h5 class="create-ad-label">Roles</h5>
+                                    </div>
+                                    <div id="{{role.id}}" *ngFor="let role of roles">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">                                        
+                                            <p> 
+                                                <input type="checkbox" 
+                                                   name="userRoles" 
+                                                   value="{{role.description}}"  
+                                                   [checked]="false" 
+                                                   (change)="updateCheckedRole(role, $event)"
+                                                 /> {{role.description}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        <h5 class="create-ad-label">Gender</h5>
+                                    </div>
+                                    <div *ngFor="let gender of genders">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">                                        
+                                            <p> 
+                                                <input type="radio" 
+                                                   name="gender" 
+                                                   value="{{gender.title}}"
+                                                   (change)="updateCheckedGender(gender, $event)"
+                                                 /> {{gender.title}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                                        
+                                        <p> 
+                                            *By registering, I agree to RoomBidRent's <a (click)="goToTerms($event)">terms</a> and <a (click)="goToPrivacyPolicy($event)">privacy policy</a>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <button type="submit" class="form-control common-custom-button">Submit</button> 
                             </div>
                         </div>

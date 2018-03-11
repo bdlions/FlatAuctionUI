@@ -19,13 +19,13 @@
         <div class="user-profile-dashboard-content-layout">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <div class="row">
+                    <div *ngIf="dtoUser.entityUser?.img != null && dtoUser.entityUser?.img != ''" class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <img class="img-responsive" src="resources/images/profile/150_150/{{dtoUser.entityUser?.img}}">
                         </div>
                     </div>
                     <br/>
-                    <div class="row">
+                    <div *ngIf="dtoUser.entityUser?.agentLogo != null && dtoUser.entityUser?.agentLogo != ''" class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <img class="img-responsive" src="resources/images/profile/logo/100_100/{{dtoUser.entityUser?.agentLogo}}">
                         </div>

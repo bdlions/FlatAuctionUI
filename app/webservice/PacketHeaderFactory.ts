@@ -116,6 +116,9 @@ export class PacketHeaderFactory {
                 break; 
             case ACTION.FETCH_USER_ROLES:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break;
+            case ACTION.FETCH_GENDERS:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break; 
                             
             case ACTION.UPDATE_USER_INFO:

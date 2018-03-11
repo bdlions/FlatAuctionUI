@@ -13,4 +13,6 @@ export class EntityUser {
     isVerified: boolean;
     cell: string;
     accountStatusId: number;
+    genderId: number;
+    genderTitle: string;
 }

@@ -35,7 +35,7 @@ export class UploadImgComponent {
             this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.UPDATE_USER_PROFILE_PICTURE), requestBody).then(result =>{
                 if (result != null && result.success){
                     //show success message
-                    this.router.navigate(['myprofile']);
+                    this.router.navigate(['myprofile', {id: this.userId }]);
                 }
                 else{
                     //show error message at this page

@@ -36,7 +36,7 @@ export class UploadLogoComponent {
                 let response  = result;
                 if (response.success){
                     //show success message
-                    this.router.navigate(['myprofile']);
+                    this.router.navigate(['myprofile', {id: this.userId }]);
                 }
                 else{
                     //show error message at this page
