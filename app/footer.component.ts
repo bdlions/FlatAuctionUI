@@ -11,6 +11,8 @@ export class FooterComponent
 {    
     private showNavBar: boolean = false;
     private activeMenu: string = "home";
+    
+    public currentDate: Date = new Date();
 
     constructor(private router:Router, private navigationManager: NavigationManager) {
         this.navigationManager.showNavBarEmitter.subscribe((mode) => {

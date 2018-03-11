@@ -46,7 +46,7 @@ import {AdvancedSearchComponent} from './search/advancedsearch.component';
 
 import {AppTemplate} from './app.template';
 import {TopNavbarComponent} from './topnavbar.component';
-import {FooterComponent} from './footer.component';
+import {FooterComponent} from './../../app/footer.component';
 import {NavigationManager} from '../../app/services/NavigationManager';
 import {MemberHeaderMenuManager} from './services/MemberHeaderMenuManager';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
