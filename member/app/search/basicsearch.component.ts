@@ -75,6 +75,14 @@ export class BasicSearchComponent{
     
     search(event: Event) {
         event.preventDefault();
+        if (this.dtoSearchParam.referenceId != null && this.dtoSearchParam.referenceId != "")
+        {
+            localStorage.setItem("referenceId", this.dtoSearchParam.referenceId);
+        }
+        if (this.selectedProductType != null && this.selectedProductType.id  > 0)
+        {
+            localStorage.setItem("productTypeId", this.selectedProductType.id+"");
+        }
         //forward search params into search page....
         //set search params into local storage
 //        if (this.searchParams.referenceId != null && this.searchParams.referenceId != "")
@@ -89,9 +97,9 @@ export class BasicSearchComponent{
 //        {
 //            localStorage.setItem("locationId", this.searchParams.location.id+"");
 //        }
-        let id:number;
-        id = 1;
-        this.router.navigate(['search', {id: id}]);
+        //let id:number;
+        //id = 1;
+        this.router.navigate(['search']);
     }
     
     basicsearch(event: Event) {

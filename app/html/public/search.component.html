@@ -49,20 +49,22 @@
             </form>
             <ul class="nav navbar-nav">
                 <li>
-                    <a >Min Price</a>
+                    <a >Min Price(£)</a>
                 </li>
                 <li class="minPrice-align">
-                    <select [(ngModel)]="selectedMinPrice" name="selectedMinPrice" (change)="onSearchParamChange($event)" class="form-control product-info-detail-minPrice">
+<!--                    <select [(ngModel)]="selectedMinPrice" name="selectedMinPrice" (change)="onSearchParamChange($event)" class="form-control product-info-detail-minPrice">
                         <option *ngFor="let minPrice of priceList" [ngValue]="minPrice" >£{{minPrice.title}}</option>
-                    </select> 
+                    </select> -->
+                    <input (change)="onSearchParamChange($event)" [(ngModel)]="minPrice" name="minPrice" class="form-control product-info-detail-minPrice" placeholder="Min Price"> 
                 </li>
                 <li>
-                    <a >Max Price</a>
+                    <a >Max Price(£)</a>
                 </li>
                 <li class="maxPrice-align">
-                    <select [(ngModel)]="selectedMaxPrice" name="selectedMaxPrice" (change)="onSearchParamChange($event)" class="form-control product-info-detail-maxPrice">
+<!--                    <select [(ngModel)]="selectedMaxPrice" name="selectedMaxPrice" (change)="onSearchParamChange($event)" class="form-control product-info-detail-maxPrice">
                         <option *ngFor="let maxPrice of priceList" [ngValue]="maxPrice" >£{{maxPrice.title}}</option>
-                    </select> 
+                    </select> -->
+                    <input (change)="onSearchParamChange($event)" [(ngModel)]="maxPrice" name="maxPrice" class="form-control product-info-detail-maxPrice" placeholder="Max Price"> 
                 </li>
                 <button type="button" class="common-custom-button custom-nav-button" data-toggle="collapse" data-target="#filsters">Filters <span class="caret"></span></button>
                 <div id="filsters" class="collapse filter-content-box">
@@ -110,12 +112,12 @@
             <div class="panel with-nav-tabs panel-primary custom-panel">
                 <div class="panel-heading custom-panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active">
+                        <li>
                             <a href="#map" data-toggle="tab" (click)="showMap = true;doTriggerResize()">
                                <i class="fa fa-map-marker" aria-hidden="true"></i> Map
                             </a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="#list" data-toggle="tab">
                                 <i class="fa fa-list" aria-hidden="true"></i> List
                             </a>
@@ -130,7 +132,7 @@
 
                 <div class="panel-body custom-panel-body">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="map">
+                        <div class="tab-pane fade" id="map">
                             <h1>{{ title }}</h1>
 
                             <!-- this creates a google map on the page with the given lat/lng from -->
@@ -146,7 +148,7 @@
 
                         </div>
                         <!--List section content-->
-                        <div class="tab-pane fade" id="list">
+                        <div class="tab-pane fade in active" id="list">
                             <div class="row form-group">
                                 <div *ngFor="let product of productList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                                     <div class="list-property-section">

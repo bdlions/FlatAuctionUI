@@ -49,16 +49,18 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
-                    <h3 class="advanced-search-selection-title">Min Price</h3>
-                    <select [(ngModel)]="selectedMinPrice" name="selectedMinPrice" class="form-control select-custom-field">
+                    <h3 class="advanced-search-selection-title">Min Price(£)</h3>
+<!--                    <select [(ngModel)]="selectedMinPrice" name="selectedMinPrice" class="form-control select-custom-field">
                         <option *ngFor="let minPrice of priceList" [ngValue]="minPrice">{{minPrice.title}} £</option>
-                    </select> 
+                    </select> -->
+                    <input [(ngModel)]="dtoSearchParam.minPrice" name="minPrice" class="form-control input-custom-field" placeholder="Min Price"> 
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
-                    <h3 class="advanced-search-selection-title">Max Price</h3>
-                    <select [(ngModel)]="selectedMaxPrice" name="selectedMaxPrice" class="form-control select-custom-field">
+                    <h3 class="advanced-search-selection-title">Max Price(£)</h3>
+<!--                    <select [(ngModel)]="selectedMaxPrice" name="selectedMaxPrice" class="form-control select-custom-field">
                         <option *ngFor="let maxPrice of priceList" [ngValue]="maxPrice">{{maxPrice.title}} £</option>
-                    </select> 
+                    </select> -->
+                    <input [(ngModel)]="dtoSearchParam.maxPrice" name="maxPrice" class="form-control input-custom-field" placeholder="Max Price"> 
                 </div>
                 
 

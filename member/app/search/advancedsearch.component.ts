@@ -127,7 +127,7 @@ export class AdvancedSearchComponent{
             if(result.success)
             {
                 this.productSizeList = result.list;
-                this.selectedProductSize = this.productSizeList[0];
+                //this.selectedProductSize = this.productSizeList[0];
             }
             else
             {
@@ -146,7 +146,7 @@ export class AdvancedSearchComponent{
             if(result.success)
             {
                 this.productTypeList = result.list;
-                this.selectedProductType = this.productTypeList[0];
+                //this.selectedProductType = this.productTypeList[0];
             }
             else
             {
@@ -166,7 +166,7 @@ export class AdvancedSearchComponent{
             if(result.success)
             {
                 this.occupationList = result.list;
-                this.selectedOccuption = this.occupationList[0];
+                //this.selectedOccuption = this.occupationList[0];
             }
             else
             {
@@ -185,7 +185,7 @@ export class AdvancedSearchComponent{
             if(result.success)
             {
                 this.petList = result.list;
-                this.selectedPet = this.petList[0];
+                //this.selectedPet = this.petList[0];
             }
             else
             {
@@ -204,7 +204,7 @@ export class AdvancedSearchComponent{
             if(result.success)
             {
                 this.availabilityList = result.list;
-                this.selectedAvailability = this.availabilityList[0];
+                //this.selectedAvailability = this.availabilityList[0];
             }
             else
             {
@@ -218,6 +218,34 @@ export class AdvancedSearchComponent{
     }
     search(event: Event) {
         event.preventDefault();
+        if (this.selectedProductSize != null && this.selectedProductSize.id  > 0)
+        {
+            localStorage.setItem("productSizeId", this.selectedProductSize.id+"");
+        }
+        if (this.selectedProductType != null && this.selectedProductType.id  > 0)
+        {
+            localStorage.setItem("productTypeId", this.selectedProductType.id+"");
+        }
+        if (this.selectedOccuption != null && this.selectedOccuption.id  > 0)
+        {
+            localStorage.setItem("occupationId", this.selectedOccuption.id+"");
+        }
+        if (this.selectedPet != null && this.selectedPet.id  > 0)
+        {
+            localStorage.setItem("petId", this.selectedPet.id+"");
+        }
+        if (this.selectedAvailability != null && this.selectedAvailability.id  > 0)
+        {
+            localStorage.setItem("availabilityId", this.selectedAvailability.id+"");
+        }
+        if (this.dtoSearchParam.minPrice != null && this.dtoSearchParam.minPrice > 0)
+        {
+            localStorage.setItem("minPrice", this.dtoSearchParam.minPrice+"");
+        }
+        if (this.dtoSearchParam.maxPrice != null && this.dtoSearchParam.maxPrice > 0)
+        {
+            localStorage.setItem("maxPrice", this.dtoSearchParam.maxPrice+"");
+        }
         //forward search params into search page....
         /*if (this.searchParams.productType != null && this.searchParams.productType.id  != 0)
         {
@@ -243,9 +271,9 @@ export class AdvancedSearchComponent{
         {
             localStorage.setItem("maxPrice", this.searchParams.maxPrice+"");
         }*/
-        let id:number;
-        id = 1;
-        this.router.navigate(['search', {id: id}]);
+        //let id:number;
+        //id = 1;
+        this.router.navigate(['search']);
     }
     
     basicsearch(event: Event) {

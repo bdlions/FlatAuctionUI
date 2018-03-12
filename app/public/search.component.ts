@@ -55,6 +55,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     private fetchProductCounter:number = 0;
     private fetchLocationCounter:number = 0;
     
+    private minPrice: string = "";
+    private maxPrice: string = "";
+    
     private productList: EntityProduct[];
     
     //private selectedLocation: EntityLocation;
@@ -135,6 +138,51 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.fetchOccupationList();
         this.fetchPetList();
         this.fetchAvailabilityList();
+        
+        let referenceId = localStorage.getItem("referenceId");
+        if (referenceId != null && referenceId != ""){
+            this.dtoSearchParam.referenceId = referenceId;
+            localStorage.removeItem("referenceId");
+        }
+        let productTypeId = localStorage.getItem("productTypeId");
+        if (productTypeId != null && productTypeId != ""){
+            this.dtoSearchParam.typeId = +productTypeId;
+            localStorage.removeItem("productTypeId");
+        }
+        let productSizeId = localStorage.getItem("productSizeId");
+        if (productSizeId != null && productSizeId != ""){
+            this.dtoSearchParam.sizeId = +productSizeId;
+            localStorage.removeItem("productSizeId");
+        }
+        let occupationId = localStorage.getItem("occupationId");
+        if (occupationId != null && occupationId != ""){
+            this.dtoSearchParam.occupationId = +occupationId;
+            localStorage.removeItem("occupationId");
+        }
+        let petId = localStorage.getItem("petId");
+        if (petId != null && petId != ""){
+            this.dtoSearchParam.petId = +petId;
+            localStorage.removeItem("petId");
+        }
+        let availabilityId = localStorage.getItem("availabilityId");
+        if (availabilityId != null && availabilityId != ""){
+            this.dtoSearchParam.availabilityId = +availabilityId;
+            localStorage.removeItem("availabilityId");
+        }
+        let minPrice = localStorage.getItem("minPrice");
+        if (minPrice != null && minPrice != ""){
+            this.dtoSearchParam.minPrice = +minPrice;
+            localStorage.removeItem("minPrice");
+        }
+        let maxPrice = localStorage.getItem("maxPrice");
+        if (maxPrice != null && maxPrice != ""){
+            this.dtoSearchParam.maxPrice = +maxPrice;
+            localStorage.removeItem("maxPrice");
+        }
+        
+        this.dtoSearchParam.offset = 0;
+        this.dtoSearchParam.limit = 10;         
+        this.fetchProductList(); 
         
         
 //        this.searchParams = new SearchParams();
@@ -282,10 +330,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     ngOnInit() {
 //        this.sebmGoogMap.triggerResize();
         this.subscribe = this.route.params.subscribe(params => {
-            this.id = params['id']; 
-            this.dtoSearchParam.offset = 0;
-            this.dtoSearchParam.limit = 10;         
-            this.fetchProductList();         
+            //this.id = params['id']; 
+//            this.dtoSearchParam.offset = 0;
+//            this.dtoSearchParam.limit = 10;         
+//            this.fetchProductList();         
         });
     }
 
@@ -294,7 +342,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
     
     public fetchProductList()
-    {
+    {        
         let requestBody: string = JSON.stringify(this.dtoSearchParam);
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.SEARCH_PRODUCT_LIST), requestBody).then(result => {
             if(result.success)
@@ -357,7 +405,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             if(result.success)
             {
                 this.productSizeList = result.list;
-                this.selectedProductSize = this.productSizeList[0];
+                //this.selectedProductSize = this.productSizeList[0];
             }
             else
             {
@@ -376,7 +424,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             if(result.success)
             {
                 this.productTypeList = result.list;
-                this.selectedProductType = this.productTypeList[0];
+                //this.selectedProductType = this.productTypeList[0];
             }
             else
             {
@@ -396,7 +444,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             if(result.success)
             {
                 this.occupationList = result.list;
-                this.selectedOccuption = this.occupationList[0];
+                //this.selectedOccuption = this.occupationList[0];
             }
             else
             {
@@ -415,7 +463,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             if(result.success)
             {
                 this.petList = result.list;
-                this.selectedPet = this.petList[0];
+                //this.selectedPet = this.petList[0];
             }
             else
             {
@@ -434,7 +482,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             if(result.success)
             {
                 this.availabilityList = result.list;
-                this.selectedAvailability = this.availabilityList[0];
+                //this.selectedAvailability = this.availabilityList[0];
             }
             else
             {
@@ -449,7 +497,45 @@ export class SearchComponent implements OnInit, OnDestroy {
     
     //retrieve product list based on search params change
     public onSearchParamChange(event: Event) {
-        this.fetchProductList();
+        if (this.selectedProductSize != null && this.selectedProductSize.id  > 0)
+        {
+            this.dtoSearchParam.sizeId = this.selectedProductSize.id;
+        }
+        if (this.selectedProductType != null && this.selectedProductType.id  > 0)
+        {
+            this.dtoSearchParam.typeId = this.selectedProductType.id;
+        }
+        if (this.selectedOccuption != null && this.selectedOccuption.id  > 0)
+        {
+            this.dtoSearchParam.occupationId = this.selectedOccuption.id;
+        }
+        if (this.selectedPet != null && this.selectedPet.id  > 0)
+        {
+            this.dtoSearchParam.petId = this.selectedPet.id;
+        }
+        if (this.selectedAvailability != null && this.selectedAvailability.id  > 0)
+        {
+            this.dtoSearchParam.availabilityId = this.selectedAvailability.id;
+        }
+        if (this.minPrice == null || this.minPrice == "")
+        {
+            this.dtoSearchParam.minPrice = 0;
+        }
+        else
+        {
+            this.dtoSearchParam.minPrice = +this.minPrice;
+        }
+        if (this.maxPrice == null || this.maxPrice == "")
+        {
+            this.dtoSearchParam.maxPrice = 0;
+        }
+        else
+        {
+            this.dtoSearchParam.maxPrice = +this.maxPrice;
+        }
+        this.dtoSearchParam.offset = 0;
+        this.dtoSearchParam.limit = 10;         
+        this.fetchProductList(); 
     }
     
     public hideChildModal(): void {
