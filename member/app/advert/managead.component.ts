@@ -320,6 +320,11 @@ export class ManageAdComponent {
         this.subscribe.unsubscribe();
     }
     
+    navigateToTopOfPage(event: Event)
+    {
+        window.scrollTo(0, 0);
+    }
+    
     fetchUserProfileInfo()
     {
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_USER_PROFILE_INFO), "{}").then(result => {

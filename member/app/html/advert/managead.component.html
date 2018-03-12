@@ -88,7 +88,7 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-xs-offset-6 col-xs-6 col-sm-offset-8 col-sm-4 col-md-offset-8 col-md-4 col-lg-offset-8 col-lg-4">
-                                                <a href="#step2" role="tab" data-toggle="tab"><button type="button" id="step1-next" name="step1-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step2" role="tab" data-toggle="tab"><button (click)="navigateToTopOfPage($event)" type="button" id="step1-next" name="step1-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -128,10 +128,10 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step1" role="tab" data-toggle="tab"><button type="button" id="step2-previous" name="step2-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step1" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step2-previous" name="step2-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                                                <a href="#step3" role="tab" data-toggle="tab"><button type="button" id="step2-next" name="step2-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step3" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step2-next" name="step2-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -215,10 +215,10 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step2" role="tab" data-toggle="tab"><button type="button" id="step3-previous" name="step3-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step2" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step3-previous" name="step3-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                                                <a href="#step4" role="tab" data-toggle="tab"><button type="button" id="step3-next" name="step3-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step4" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step3-next" name="step3-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -255,10 +255,10 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step3" role="tab" data-toggle="tab"><button type="button" id="step4-previous" name="step4-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step3" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step4-previous" name="step4-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                                                <a href="#step5" role="tab" data-toggle="tab"><button type="button" id="step4-next" name="step4-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step5" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step4-next" name="step4-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -308,10 +308,10 @@
                                         </div>
                                        <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step4" role="tab" data-toggle="tab"> <button type="button" id="step5-previous" name="step5-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step4" role="tab" data-toggle="tab"> <button type="button" (click)="navigateToTopOfPage($event)" id="step5-previous" name="step5-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                                                <a href="#step6" role="tab" data-toggle="tab"><button type="button" id="step5-next" name="step5-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step6" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step5-next" name="step5-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -401,10 +401,10 @@
 
                                         <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step5" role="tab" data-toggle="tab"><button type="button" id="step5-previous" name="step5-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step5" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step5-previous" name="step5-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                                                <a href="#step7" role="tab" data-toggle="tab"><button type="button" id="step5-next" name="step5-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step7" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step5-next" name="step5-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -457,10 +457,10 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step6" role="tab" data-toggle="tab"><button type="button" id="step7-previous" name="step7-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step6" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step7-previous" name="step7-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                                                <a href="#step8" role="tab" data-toggle="tab"><button type="button" id="step7-next" name="step7-next" class="form-control common-custom-button">Next Step</button></a>
+                                                <a href="#step8" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step7-next" name="step7-next" class="form-control common-custom-button">Next Step</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -497,7 +497,7 @@
                                         </div>
                                          <div class="row form-group">
                                             <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
-                                                <a href="#step7" role="tab" data-toggle="tab"><button type="button" id="step8-previous" name="step8-previous" class="form-control common-custom-button">Previous Step</button></a>
+                                                <a href="#step7" role="tab" data-toggle="tab"><button type="button" (click)="navigateToTopOfPage($event)" id="step8-previous" name="step8-previous" class="form-control common-custom-button">Previous Step</button></a>
                                             </div>
                                             <div class="col-xs-6 col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
                                                 <button type="submit" id="step8-next" name="step8-next" class="form-control common-custom-button">Save Advert</button>

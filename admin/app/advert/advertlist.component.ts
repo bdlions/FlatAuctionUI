@@ -51,6 +51,12 @@ export class AdvertListComponent{
         this.router.navigate(['showad', {id: id }]);
     }
     
+    showAutoBids(event: Event, id: number)
+    {
+        event.preventDefault();
+        this.router.navigate(['showautobids', {id: id }]);
+    }
+    
     manageAd(event: Event, id: number)
     {
         event.preventDefault();

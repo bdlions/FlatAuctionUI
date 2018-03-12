@@ -8,6 +8,7 @@ import {EntitySavedProduct} from '../dto/EntitySavedProduct';
 import {EntityAmenity} from '../dto/EntityAmenity';
 import {DTOAmenity} from '../dto/DTOAmenity';
 import {EntityBid} from '../dto/EntityBid';
+import {EntityAutoBid} from '../dto/EntityAutoBid';
 import {DTOMessageHeader} from '../dto/DTOMessageHeader';
 import {EntityMessageHeader} from '../dto/EntityMessageHeader';
 import {EntityMessageBody} from '../dto/EntityMessageBody';
@@ -27,6 +28,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     private productInfo: EntityProduct;
     private dtoProduct: DTOProduct;
     private entityBid: EntityBid;
+    private entityAutoBid: EntityAutoBid;
     private subscribe:Subscription;
     private newMessageBody:string;
     private availabilityString:string;
@@ -52,6 +54,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.dtoProduct.entityProduct = new EntityProduct();
         this.productInfo = new EntityProduct();
         this.entityBid = new EntityBid();
+        this.entityAutoBid = new EntityAutoBid();
         this.newMessageBody = "";
         setInterval(() => { this.productInfoModal.hide(); }, 1000 * 5);
     }
@@ -268,7 +271,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         {
             if (this.entityBid.price == null || this.entityBid.price <= 0 )
             {
-                this.message = "Please assign value for the bid.";
+                this.message = "Please assign value for a bid.";
                 this.productInfoModal.show();
                 return;
             }
@@ -291,6 +294,40 @@ export class ProductComponent implements OnInit, OnDestroy {
         {
             //show error messaage
             this.message = "Please login to post a bid.";
+            this.productInfoModal.show();
+        }
+        
+    }
+    
+    postAutoBid(event: Event) 
+    {
+        let username = localStorage.getItem("username");
+        if (username != null && username != "")
+        {
+            if (this.entityAutoBid.price == null || this.entityAutoBid.price <= 0 )
+            {
+                this.message = "Please assign value for an auto bid.";
+                this.productInfoModal.show();
+                return;
+            }
+            
+            this.entityAutoBid.productId = this.productInfo.id;
+            this.entityAutoBid.productTitle = this.productInfo.title;
+            //ser user id from session at server
+            let requestBody: string = JSON.stringify(this.entityAutoBid);
+            this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.ADD_PRODUCT_AUTO_BID), requestBody).then(result =>{
+                if(result.success)
+                {
+                    this.entityAutoBid = new EntityAutoBid();
+                }
+                this.message = result.message;
+                this.productInfoModal.show();
+            });
+        }
+        else
+        {
+            //show error messaage
+            this.message = "Please login to post an auto bid.";
             this.productInfoModal.show();
         }
         

@@ -120,6 +120,12 @@ export class PacketHeaderFactory {
             case ACTION.FETCH_GENDERS:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break; 
+            case ACTION.ADD_PRODUCT_AUTO_BID:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break; 
+            case ACTION.FETCH_PRODUCT_AUTO_BID_LIST:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break; 
                             
             case ACTION.UPDATE_USER_INFO:
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
