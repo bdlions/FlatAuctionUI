@@ -122,7 +122,11 @@ export class EditProfileComponent {
             this.errorMessage = "Password and Confirm Password must be same.";
             return;
         }
-        
+        if (this.roleList == null || this.roleList.length == 0)
+        {
+            this.errorMessage = "Role is required.";
+            return;
+        }
         this.dtoUser.roles = this.roleList;
         let requestBody: string = JSON.stringify(this.dtoUser);
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.UPDATE_USER_INFO), requestBody).then(result =>{
