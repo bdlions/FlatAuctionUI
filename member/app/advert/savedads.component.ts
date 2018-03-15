@@ -99,4 +99,10 @@ export class SavedAdsComponent{
         event.preventDefault();
         this.router.navigate(['savedads', {id: this.userId }]);
     }
+    
+    //featured ad section
+    accountSettingsFA(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['accountsettingsfa', {userId: this.userId }]);
+    }
 }

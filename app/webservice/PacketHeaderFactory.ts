@@ -125,6 +125,9 @@ export class PacketHeaderFactory {
                 break; 
             case ACTION.FETCH_PRODUCT_AUTO_BID_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break;
+            case ACTION.FETCH_USER_ACCOUNT_SETTINGS_FA:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break; 
                             
             case ACTION.UPDATE_USER_INFO:
@@ -140,6 +143,9 @@ export class PacketHeaderFactory {
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
                 break;
             case ACTION.UPDATE_PRODUCT_INFO:
+                packetHeader.requestType = REQUEST_TYPE.UPDATE
+                break;
+            case ACTION.UPDATE_USER_ACCOUNT_SETTINGS_FA:
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
                 break;
             

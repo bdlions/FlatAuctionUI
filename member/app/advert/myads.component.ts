@@ -105,6 +105,12 @@ export class MyAdsComponent{
         this.router.navigate(['savedads', {id: this.userId }]);
     }
     
+    //featured ad section
+    accountSettingsFA(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['accountsettingsfa', {userId: this.userId }]);
+    }
+    
     /*public myproduct(event: Event, id: number){
         event.preventDefault();
         this.router.navigate(['myproduct', {id: id }]);

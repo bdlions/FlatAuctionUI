@@ -1,0 +1,94 @@
+<div bsModal #accountSettingsSuccessModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Account Settings</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                {{message}}
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row margin-top-align">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="featured-ad-left-sidebar-ul">
+            <li *ngIf='!isAdmin'><a (click)="manageAd($event, 0)">Create Ads</a></li>
+            <li><a (click)="myAds($event)">My Ads</a></li>
+            <li><a (click)="savedAds($event)">Saved Ads</a></li>
+            <li><ul class="nav nav-pills nav-stacked" id="stacked-menu">
+                    <li>
+                        <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p1">Featured Ads <span class="caret"></span></a>          
+                        <ul class="nav nav-pills nav-stacked collapse in" id="p1" aria-expanded="true">
+                            <li><a class="active" (click)="accountSettingsFA($event)">Account Settings</a></li>
+<!--                            <li><a [routerLink]="['/individualadbids']" (click)="individualadbids($event)">Individual Ad Bids</a></li>
+                            <li><a [routerLink]="['/stats']" (click)="stats($event)">Stats</a></li>
+                            <li><a [routerLink]="['/ranking']" (click)="ranking($event)">Ranking</a></li>
+                            <li><a (click)="fafaq($event)">FAQ</a></li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <h2 class="featured-ad-heading">Account Settings for Featured Ad</h2>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <form>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="featured-ad-label">Default Bid Per Click</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <div class="default-bid-per-click">
+                                <input [(ngModel)]="entityAccountSettingsFA.chargePerClick" id="chargePerClick" name="chargePerClick" type="number" class="form-control input-custom-field"/> <span>p</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="featured-ad-label">Daily Budget</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <div class="daily-budget">
+                                <input [(ngModel)]="entityAccountSettingsFA.dailyBudget" id="dailyBudget" name="dailyBudget" type="number" class="form-control input-custom-field"/>  <span>£</span> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group user-account-settings-compaign-status">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <h5 class="featured-ad-label">Campaign Status</h5>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                            <div class="radio-inline radio_inline">
+                                <input (change)="updateCheckedActivated($event)" type="radio" name="user-account-settings-compaign-status" checked="{{activatedChecked}}">
+                                <i class="fa fa-check" aria-hidden="true"></i> <span>Activated</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                            <div class="radio-inline radio_inline pull-right">
+                                <input (change)="updateCheckedDeactivated($event)" type="radio" name="user-account-settings-compaign-status" checked="{{deactivatedChecked}}">
+                                <i class="fa fa-times" aria-hidden="true"></i> <span>Deactivated</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <button (click)="saveAccountSettingsFA($event)" id="account-settings-update-button" name="account-settings-update-button" class="common-custom-button pull-right">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

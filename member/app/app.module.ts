@@ -39,6 +39,11 @@ import {UploadDocumentComponent} from './profile/uploaddocument.component';
 import {BasicSearchComponent} from './search/basicsearch.component';
 import {AdvancedSearchComponent} from './search/advancedsearch.component';
 
+import {AccountSettingsFA} from './featuredad/accountsettingsfa.component';
+
+import {DemoPaypalComponent} from './demopaypal.component';
+import {DemoWorldPayComponent} from './demoworldpay.component';
+
 import {AppTemplate} from './app.template';
 import {TopNavbarComponent} from './topnavbar.component';
 import {FooterComponent} from './../../app/footer.component';
@@ -194,6 +199,18 @@ const appRoutes: Routes = [
         component: AdvancedSearchComponent
     },
     {
+        path: 'accountsettingsfa',
+        component: AccountSettingsFA
+    },
+    {
+        path: 'demopaypal',
+        component: DemoPaypalComponent
+    },
+    {
+        path: 'demoworldpay',
+        component: DemoWorldPayComponent
+    },
+    {
         path: '**',
         component: MemberDashBoardComponent
     },
@@ -301,6 +318,11 @@ enableProdMode();
         
         BasicSearchComponent,
         AdvancedSearchComponent,
+        
+        AccountSettingsFA,
+        
+        DemoPaypalComponent,
+        DemoWorldPayComponent,
 
         TopNavbarComponent,
         FooterComponent,
