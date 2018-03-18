@@ -1,20 +1,3 @@
-<div bsModal #accountSettingsSuccessModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-     <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title pull-left" style="color: #FFF;">Account Settings</h4>
-                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                {{message}}
-            </div>
-            <div class="modal-footer"></div>
-        </div>
-    </div>
-</div>
-
 <div class="row margin-top-align">
     <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
         <ul class="featured-ad-left-sidebar-ul">
@@ -26,8 +9,8 @@
                         <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p1">Featured Ads <span class="caret"></span></a>          
                         <ul class="nav nav-pills nav-stacked collapse in" id="p1" aria-expanded="true">
                             <li><a class="active" (click)="accountSettingsFA($event)">Account Settings</a></li>
-<!--                            <li><a [routerLink]="['/individualadbids']" (click)="individualadbids($event)">Individual Ad Bids</a></li>
-                            <li><a [routerLink]="['/stats']" (click)="stats($event)">Stats</a></li>
+                            <li><a (click)="individualadbids($event)">Individual Ad Bids</a></li>
+<!--                            <li><a [routerLink]="['/stats']" (click)="stats($event)">Stats</a></li>
                             <li><a [routerLink]="['/ranking']" (click)="ranking($event)">Ranking</a></li>
                             <li><a (click)="fafaq($event)">FAQ</a></li>-->
                         </ul>
@@ -71,13 +54,13 @@
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                             <div class="radio-inline radio_inline">
-                                <input (change)="updateCheckedActivated($event)" type="radio" name="user-account-settings-compaign-status" checked="{{activatedChecked}}">
+                                <input type="radio" name="user-account-settings-compaign-status" [(ngModel)]="entityAccountSettingsFA.campainActive" [value]="true">
                                 <i class="fa fa-check" aria-hidden="true"></i> <span>Activated</span>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                             <div class="radio-inline radio_inline pull-right">
-                                <input (change)="updateCheckedDeactivated($event)" type="radio" name="user-account-settings-compaign-status" checked="{{deactivatedChecked}}">
+                                <input type="radio" name="user-account-settings-compaign-status" [(ngModel)]="entityAccountSettingsFA.campainActive" [value]="false">
                                 <i class="fa fa-times" aria-hidden="true"></i> <span>Deactivated</span>
                             </div>
                         </div>
@@ -89,6 +72,23 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #accountSettingsSuccessModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Account Settings</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                {{message}}
+            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>

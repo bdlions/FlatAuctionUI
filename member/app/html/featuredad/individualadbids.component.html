@@ -1,0 +1,115 @@
+<div class="row  margin-top-align">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="featured-ad-left-sidebar-ul">
+            <li *ngIf='!isAdmin'><a (click)="manageAd($event, 0)">Create Ads</a></li>
+            <li><a (click)="myAds($event)">My Ads</a></li>
+            <li><a (click)="savedAds($event)">Saved Ads</a></li>
+            <li><ul class="nav nav-pills nav-stacked" id="stacked-menu">
+                    <li>
+                        <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p1">Featured Ads <span class="caret"></span></a>          
+                        <ul class="nav nav-pills nav-stacked collapse in" id="p1" aria-expanded="true">
+                            <li><a (click)="accountSettingsFA($event)">Account Settings</a></li>
+                            <li><a class="active" (click)="individualadbids($event)">Individual Ad Bids</a></li>
+<!--                            <li><a [routerLink]="['/stats']" (click)="stats($event)">Stats</a></li>
+                            <li><a [routerLink]="['/ranking']" (click)="ranking($event)">Ranking</a></li>
+                            <li><a (click)="fafaq($event)">FAQ</a></li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="featured-ad-heading">Individual Ad Bids</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <h4 class="featured-ad-label">Featured Ad</h4>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
+                    <h4 class="featured-ad-label">Ad Title</h4>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <h4 class="featured-ad-label">Guide Price</h4>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                    <h4 class="featured-ad-label">Ad Bids (p)</h4>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <div class="row form-group individual-ad-bids-table" *ngFor="let product of productList">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
+                            <div class="row ">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="radio-inline">
+                                        <input type="radio" name="featured-add-optradio-{{product.id}}" [(ngModel)]="product.isFeaturedAd" [value]="true"><span>Yes</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="radio-inline">
+                                        <input type="radio" name="featured-add-optradio-{{product.id}}" [(ngModel)]="product.isFeaturedAd" [value]="false"><span>No</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
+                            <div class="individual-ad-bids-product-title">{{product.title}}</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2  form-group">
+                            <span>£{{product.basePrice | number:'.2-2'}}</span>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4">
+                                <input (change)="setDefaultBid(product, $event)" type="radio" name="ad-bids-optradio-{{product.id}}" [(ngModel)]="product.isDefaultBid" [value]="true"><span>default</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8">
+                                <input type="radio" name="ad-bids-optradio-{{product.id}}" [(ngModel)]="product.isDefaultBid" [value]="false"><span>custom</span>  <input *ngIf='!product.isDefaultBid' id="custom-bid" name="custom-bid" type="number"  (ngModelChange)="product.featuredAdBid=$event" [ngModel]="product.featuredAdBid | number:'.2-2'"/> 
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <mat-paginator [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="onPaginateChange($event)">
+            </mat-paginator>
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="divider"></div>
+                </div>
+            </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+            <button (click)="updateAdBids($event)" id="individual-ad-bids-update-button" name="individual-ad-bids-update-button" class="common-custom-button pull-right">Update</button>
+        </div>
+    </div>
+</div>
+
+<div bsModal #individualAdbidsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Account Settings</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                {{message}}
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

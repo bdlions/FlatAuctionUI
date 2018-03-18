@@ -26,6 +26,9 @@ export class PacketHeaderFactory {
             case ACTION.SIGN_UP:
                 packetHeader.requestType = REQUEST_TYPE.AUTH
                 break;
+            case ACTION.FORGET_PASSWORD:
+                packetHeader.requestType = REQUEST_TYPE.AUTH
+                break;
             
             case ACTION.FETCH_USER_INFO:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
@@ -146,6 +149,9 @@ export class PacketHeaderFactory {
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
                 break;
             case ACTION.UPDATE_USER_ACCOUNT_SETTINGS_FA:
+                packetHeader.requestType = REQUEST_TYPE.UPDATE
+                break;
+            case ACTION.UPDATE_AD_BIDS:
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
                 break;
             

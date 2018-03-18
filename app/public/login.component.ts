@@ -113,6 +113,11 @@ export class LoginComponent {
         });
     }
     
+    goForgetPassword(event: Event) 
+    {
+        event.preventDefault();
+        this.router.navigate(["forgetpassword"]);
+    }
 }
 
 

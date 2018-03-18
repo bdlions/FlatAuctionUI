@@ -40,6 +40,7 @@ import {BasicSearchComponent} from './search/basicsearch.component';
 import {AdvancedSearchComponent} from './search/advancedsearch.component';
 
 import {AccountSettingsFA} from './featuredad/accountsettingsfa.component';
+import {IndividualAdBidsComponent} from './featuredad/individualadbids.component';
 
 import {DemoPaypalComponent} from './demopaypal.component';
 import {DemoWorldPayComponent} from './demoworldpay.component';
@@ -203,6 +204,10 @@ const appRoutes: Routes = [
         component: AccountSettingsFA
     },
     {
+        path: 'individualadbids',
+        component: IndividualAdBidsComponent
+    },
+    {
         path: 'demopaypal',
         component: DemoPaypalComponent
     },
@@ -320,6 +325,7 @@ enableProdMode();
         AdvancedSearchComponent,
         
         AccountSettingsFA,
+        IndividualAdBidsComponent,
         
         DemoPaypalComponent,
         DemoWorldPayComponent,

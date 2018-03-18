@@ -45,6 +45,9 @@ import {AccountComponent} from './account.component';
 import {BasicSearchComponent} from './search/basicsearch.component';
 import {AdvancedSearchComponent} from './search/advancedsearch.component';
 
+import {AccountSettingsFA} from '../../member/app/featuredad/accountsettingsfa.component';
+import {IndividualAdBidsComponent} from '../../member/app/featuredad/individualadbids.component';
+
 import {AppTemplate} from './app.template';
 import {TopNavbarComponent} from './topnavbar.component';
 import {FooterComponent} from './../../app/footer.component';
@@ -212,6 +215,14 @@ const appRoutes: Routes = [
         component: AdvancedSearchComponent
     },
     {
+        path: 'accountsettingsfa',
+        component: AccountSettingsFA
+    },
+    {
+        path: 'individualadbids',
+        component: IndividualAdBidsComponent
+    },
+    {
         path: '**',
         component: AdminDashBoardComponent
     },
@@ -323,6 +334,9 @@ enableProdMode();
         
         BasicSearchComponent,
         AdvancedSearchComponent,
+        
+        AccountSettingsFA,
+        IndividualAdBidsComponent,
 
         TopNavbarComponent,
         FooterComponent,

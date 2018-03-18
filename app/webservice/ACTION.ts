@@ -2,6 +2,7 @@ export enum ACTION{
     SIGN_IN = 1001,
     SIGN_OUT = 1002,
     SIGN_UP = 1003,
+    FORGET_PASSWORD = 1004,
     
     FETCH_USER_INFO = 2001,
     FETCH_MEMBER_ROLES = 2002,
@@ -44,6 +45,7 @@ export enum ACTION{
     UPDATE_USER_DOCUMENT = 3004,
     UPDATE_PRODUCT_INFO = 3005,
     UPDATE_USER_ACCOUNT_SETTINGS_FA = 3006,
+    UPDATE_AD_BIDS = 3007,
     
     
     //Only For Admin

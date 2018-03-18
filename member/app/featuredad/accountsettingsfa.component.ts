@@ -18,8 +18,6 @@ export class AccountSettingsFA implements OnInit, OnDestroy {
     private webAPIService: WebAPIService;
     private entityAccountSettingsFA: EntityAccountSettingsFA;
     private message: string;
-    private activatedChecked: string = "";
-    private deactivatedChecked: string = "";
     
     private isAdmin: boolean = false;
     private subscribe:Subscription;
@@ -79,16 +77,6 @@ export class AccountSettingsFA implements OnInit, OnDestroy {
             if(result.success)
             {
                 this.entityAccountSettingsFA = result.result;
-                if (this.entityAccountSettingsFA.campainActive)
-                {
-                    this.activatedChecked = "checked";
-                    this.deactivatedChecked = "";
-                }
-                else
-                {
-                    this.activatedChecked = "";
-                    this.deactivatedChecked = "checked";
-                }
                 //converting pound into p
                 this.entityAccountSettingsFA.chargePerClick = this.entityAccountSettingsFA.chargePerClick * 100;
             }
@@ -107,19 +95,6 @@ export class AccountSettingsFA implements OnInit, OnDestroy {
             //converting pound into p
             this.entityAccountSettingsFA.chargePerClick = this.entityAccountSettingsFA.chargePerClick * 100;
         });
-    }
-    
-    updateCheckedActivated(event: Event)
-    {
-        this.entityAccountSettingsFA.campainActive = true;
-        this.activatedChecked = "checked";
-        this.deactivatedChecked = "";
-    }
-    updateCheckedDeactivated(event: Event)
-    {
-        this.entityAccountSettingsFA.campainActive = false;
-        this.activatedChecked = "";
-        this.deactivatedChecked = "checked";
     }
     
     manageAd(event: Event, id: number){
@@ -141,6 +116,11 @@ export class AccountSettingsFA implements OnInit, OnDestroy {
     accountSettingsFA(event: Event) {
         event.preventDefault();
         this.router.navigate(['accountsettingsfa', {userId: this.userId }]);
-    }    
+    }   
+    
+    individualadbids(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['individualadbids', {userId: this.userId }]);
+    }  
 }
 

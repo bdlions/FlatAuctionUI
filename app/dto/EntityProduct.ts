@@ -49,6 +49,9 @@ export class EntityProduct {
     phone: string;
     basePrice: string;
     totalBids: string;
+    isFeaturedAd: boolean;
+    isDefaultBid: boolean;
+    featuredAdBid: number
     createdOn: string;
     modifiedOn: string;
     

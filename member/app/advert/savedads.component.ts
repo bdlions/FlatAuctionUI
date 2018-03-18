@@ -105,4 +105,9 @@ export class SavedAdsComponent{
         event.preventDefault();
         this.router.navigate(['accountsettingsfa', {userId: this.userId }]);
     }
+    
+    individualadbids(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['individualadbids', {userId: this.userId }]);
+    } 
 }

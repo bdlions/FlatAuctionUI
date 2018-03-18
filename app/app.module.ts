@@ -10,6 +10,7 @@ import {APP_BASE_HREF} from '@angular/common';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './public/login.component';
+import {ForgetPasswordComponent} from './public/forgetpassword.component';
 import {SignupComponent} from './public/signup.component';
 import {SearchComponent} from './public/search.component';
 
@@ -95,6 +96,10 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'forgetpassword',
+        component: ForgetPasswordComponent
     },
     {
         path: 'signup',
@@ -221,6 +226,7 @@ enableProdMode();
         AppComponent,
         SearchComponent,
         LoginComponent,
+        ForgetPasswordComponent,
         SignupComponent,
         AboutComponent,
         ContactComponent,

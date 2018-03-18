@@ -111,6 +111,11 @@ export class MyAdsComponent{
         this.router.navigate(['accountsettingsfa', {userId: this.userId }]);
     }
     
+    individualadbids(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['individualadbids', {userId: this.userId }]);
+    } 
+    
     /*public myproduct(event: Event, id: number){
         event.preventDefault();
         this.router.navigate(['myproduct', {id: id }]);
