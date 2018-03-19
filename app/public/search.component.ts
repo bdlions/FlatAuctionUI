@@ -596,6 +596,43 @@ export class SearchComponent implements OnInit, OnDestroy {
         //this.sebmGoogMap.triggerResize();
     }
 
+    goSearchMap(event: Event)
+    {
+        if (this.dtoSearchParam.referenceId != null && this.dtoSearchParam.referenceId != "")
+        {
+            localStorage.setItem("referenceId", this.dtoSearchParam.referenceId+"");
+        }
+        if (this.dtoSearchParam.sizeId != null && this.dtoSearchParam.sizeId > 0)
+        {
+            localStorage.setItem("productSizeId", this.dtoSearchParam.sizeId+"");
+        }
+        if (this.dtoSearchParam.typeId != null && this.dtoSearchParam.typeId > 0)
+        {
+            localStorage.setItem("productTypeId", this.dtoSearchParam.typeId+"");
+        }
+        if (this.dtoSearchParam.occupationId != null && this.dtoSearchParam.occupationId > 0)
+        {
+            localStorage.setItem("occupationId", this.dtoSearchParam.occupationId+"");
+        }
+        if (this.dtoSearchParam.petId != null && this.dtoSearchParam.petId > 0)
+        {
+            localStorage.setItem("petId", this.dtoSearchParam.petId+"");
+        }
+        if (this.dtoSearchParam.availabilityId != null && this.dtoSearchParam.availabilityId > 0)
+        {
+            localStorage.setItem("availabilityId", this.dtoSearchParam.availabilityId+"");
+        }
+        if (this.dtoSearchParam.minPrice != null && this.dtoSearchParam.minPrice > 0)
+        {
+            localStorage.setItem("minPrice", this.dtoSearchParam.minPrice+"");
+        }
+        if (this.dtoSearchParam.maxPrice != null && this.dtoSearchParam.maxPrice > 0)
+        {
+            localStorage.setItem("maxPrice", this.dtoSearchParam.maxPrice+"");
+        }
+        event.preventDefault();
+        this.router.navigate(['searchmap']);
+    }
     
 }
 

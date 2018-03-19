@@ -16,6 +16,7 @@ import {TermsComponent} from '../../app/common/terms.component';
 
 import {HomeComponent} from './home.component';
 import {SearchComponent} from '../../app/public/search.component';
+import {SearchMapComponent} from '../../app/public/searchmap.component';
 import {MemberDashBoardComponent} from './dashboard.component';
 
 import {ManageAdComponent} from './advert/managead.component';
@@ -130,6 +131,10 @@ const appRoutes: Routes = [
     {
         path: 'search',
         component: SearchComponent
+    },
+    {
+        path: 'searchmap',
+        component: SearchMapComponent
     },
     {
         path: 'dashboard',
@@ -301,6 +306,7 @@ enableProdMode();
         
         HomeComponent,
         SearchComponent,
+        SearchMapComponent,
         MemberDashBoardComponent,
         
         ManageAdComponent,

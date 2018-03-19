@@ -1,16 +1,272 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div bsModal #searchModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-header-bg">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Message</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center modal-body-text">
+                {{message}}
+            </div>
+            <div class="modal-footer modal-footer-bg"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <nav class="navbar navbar-default product-info-detail-navbar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#product-info-detail-navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="#">Brand</a>-->
+        </div>
+
+        <div class="collapse navbar-collapse" id="product-info-detail-navbar">
+            <form autocomplete="off" class="navbar-form navbar-left">
+                <div class="form-group">
+<!--                    <div class="property-search-page-search-box-layout">
+                        <input #locationSelector name="locationSelector" [(ngModel)]="selectedLocation"
+                            [typeahead]="locationList"
+                            typeaheadOptionField="searchString"
+                            class="form-control search-input-field margin-top-1px">
+                    </div>-->
+                    <div class="landing-page-search-box-layout">
+                        <input #locationSelector name="locationSelector" [(ngModel)]="selectedLocation"
+                            [typeahead]="locationList"
+                            typeaheadOptionField="searchString"
+                            class="form-control search-input-field">
+                    </div>
+                </div>
+            </form>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a >Min Price(£)</a>
+                </li>
+                <li class="minPrice-align">
+<!--                    <select [(ngModel)]="selectedMinPrice" name="selectedMinPrice" (change)="onSearchParamChange($event)" class="form-control product-info-detail-minPrice">
+                        <option *ngFor="let minPrice of priceList" [ngValue]="minPrice" >£{{minPrice.title}}</option>
+                    </select> -->
+                    <input (change)="onSearchParamChange($event)" [(ngModel)]="minPrice" name="minPrice" class="form-control product-info-detail-minPrice" placeholder="Min Price"> 
+                </li>
+                <li>
+                    <a >Max Price(£)</a>
+                </li>
+                <li class="maxPrice-align">
+<!--                    <select [(ngModel)]="selectedMaxPrice" name="selectedMaxPrice" (change)="onSearchParamChange($event)" class="form-control product-info-detail-maxPrice">
+                        <option *ngFor="let maxPrice of priceList" [ngValue]="maxPrice" >£{{maxPrice.title}}</option>
+                    </select> -->
+                    <input (change)="onSearchParamChange($event)" [(ngModel)]="maxPrice" name="maxPrice" class="form-control product-info-detail-maxPrice" placeholder="Max Price"> 
+                </li>
+                <button type="button" class="common-custom-button custom-nav-button" data-toggle="collapse" data-target="#filsters">Filters <span class="caret"></span></button>
+                <div id="filsters" class="collapse filter-content-box">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+                            <h3 class="filsters-submenu-title">Property Type</h3>
+                            <select [(ngModel)]="selectedProductType" name="selectedProductType" (change)="onSearchParamChange($event)" class="form-control select-custom-field">
+                                <option *ngFor="let productType of productTypeList" [ngValue]="productType" >{{productType.title}}</option>
+                            </select> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+                            <h3 class="filsters-submenu-title">Property Size</h3>
+                            <select [(ngModel)]="selectedProductSize" name="selectedProductSize" (change)="onSearchParamChange($event)" class="form-control select-custom-field">
+                                <option *ngFor="let productSize of productSizeList" [ngValue]="productSize" >{{productSize.title}}</option>
+                            </select> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+                            <h3 class="filsters-submenu-title">Occupation</h3>
+                            <select [(ngModel)]="selectedOccuption" name="selectedOccuption" (change)="onSearchParamChange($event)" class="form-control select-custom-field">
+                                <option *ngFor="let occupation of occupationList" [ngValue]="occupation" >{{occupation.title}}</option>
+                            </select> 
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+                            <h3 class="filsters-submenu-title">Pet</h3>
+                            <select [(ngModel)]="selectedPet" name="selectedPet" (change)="onSearchParamChange($event)" class="form-control select-custom-field">
+                                <option *ngFor="let pet of petList" [ngValue]="pet" >{{pet.title}}</option>
+                            </select> 
+                        </div>                        
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+                            <h3 class="filsters-submenu-title">Duration</h3>
+                            <select [(ngModel)]="selectedAvailability" name="selectedAvailability" (change)="onSearchParamChange($event)" class="form-control select-custom-field">
+                                <option *ngFor="let availability of availabilityList" [ngValue]="availability" >{{availability.title}}</option>
+                            </select> 
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row form-group">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="panel with-nav-tabs panel-primary custom-panel">
+                <div class="panel-heading custom-panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#map" data-toggle="tab" (click)="showMap = true;doTriggerResize()">
+                               <i class="fa fa-map-marker" aria-hidden="true"></i> Map
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#list" data-toggle="tab">
+                                <i class="fa fa-list" aria-hidden="true"></i> List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#grid" data-toggle="tab" >
+                                <i class="fa fa-bars" aria-hidden="true"></i> Grid
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel-body custom-panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="map">
+                            <h1>{{ title }}</h1>
+
+                            <!-- this creates a google map on the page with the given lat/lng from -->
+                            <!-- the component as the initial center of the map: -->
+
+<!--                            <sebm-google-map [latitude]="lat" [longitude]="lng">
+                                <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+                            </sebm-google-map>-->
+                            <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker *ngFor="let product of productList" [latitude]="product.lat" [longitude]="product.lon"></agm-marker>
+                            </agm-map>
+
+
+                        </div>
+                        <!--List section content-->
+                        <div class="tab-pane fade" id="list">
+                            <div class="row form-group">
+                                <div *ngFor="let product of productList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <div class="list-property-section">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                        <a (click)="showAd($event, product.id)"><img class="img-responsive list-property-big-img" src="resources/images/product/328_212/{{product.img}}" alt="Property Image"></a>
+                                                    </div>
+                                                    <div *ngFor="let image of product.imageArray" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                        <a (click)="showAd($event, product.id)"><img class="img-responsive list-property-small-img" src="resources/images/product/328_212/{{image}}" alt="Property Image"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                <div class="list-property-top-right-sction">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <div class="list-property-title">
+                                                                <h4><a (click)="showAd($event, product.id)">{{product.title}}</a></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                            <div class="list-property-description">
+                                                                <h4><a (click)="showAd($event, product.id)">{{product.description}}</a></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                                <div class="list-property-left-bottom-section">
+                                                    <div class="list-property-price">
+                                                        <h2>£{{product.basePrice | number:'.2-2'}}</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="list-property-right-bottom-section">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                                        </div>
+                                                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                            <a (click)="saveProduct($event, product.id)" class="list-property-sign-up-anchor"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                        </div>
+                                                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                                            <!--<a href="" class="list-property-contact-anchor"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-paginator [length]="length"
+                                [pageSize]="pageSize"
+                                [pageSizeOptions]="pageSizeOptions"
+                                (page)="onPaginateChange($event)">
+                            </mat-paginator>
+                        </div>
+                        <!--grid section content-->
+                        <div class="tab-pane fade" id="grid">
+                            <div class="row form-group">
+                                <div *ngFor="let product of productList" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 form-group">
+                                    <div class="grid-property-section">
+                                        <div class="grid-property-img">
+                                            <a (click)="showAd($event, product.id)"><img class="img-responsive" src="resources/images/product/328_212/{{product.img}}" alt="Property Image"></a>
+                                        </div>
+                                        <div class="grid-property-price">
+                                            <h3>£{{product.basePrice | number:'.2-2'}}</h3>
+                                        </div>
+                                        <div class="padding-5px">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    <div class="grid-property-title">
+                                                        <h4><a (click)="showAd($event, product.id)">{{product.title}}</a></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                                    <div class="grid-property-description">
+                                                        <h4><a (click)="showAd($event, product.id)">{{product.description}}</a></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                    <a (click)="saveProduct($event, product.id)" class="grid-property-sign-up-anchor"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                    <!--<a href="" class="grid-property-contact-anchor"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-paginator [length]="length"
+                                [pageSize]="pageSize"
+                                [pageSizeOptions]="pageSizeOptions"
+                                (page)="onPaginateChange($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

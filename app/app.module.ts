@@ -13,6 +13,7 @@ import {LoginComponent} from './public/login.component';
 import {ForgetPasswordComponent} from './public/forgetpassword.component';
 import {SignupComponent} from './public/signup.component';
 import {SearchComponent} from './public/search.component';
+import {SearchMapComponent} from './public/searchmap.component';
 
 import {ProductComponent} from './public/product.component';
 import {BidsComponent} from './public/bids.component';
@@ -92,6 +93,10 @@ const appRoutes: Routes = [
     {
         path: 'search',
         component: SearchComponent
+    },
+    {
+        path: 'searchmap',
+        component: SearchMapComponent
     },
     {
         path: 'login',
@@ -225,6 +230,7 @@ enableProdMode();
          */
         AppComponent,
         SearchComponent,
+        SearchMapComponent,
         LoginComponent,
         ForgetPasswordComponent,
         SignupComponent,
