@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="dashboard-left-sidebar-ul margin-top-align">
+            <li><a (click)="showManageLocation($event, 0)">Create Location</a></li>
+            <li><a class="active" (click)="showLocationList($event)">Location List</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10"> 
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="my-ads-product-heading">Locations</h2>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group" *ngFor="let location of locationList">
+                 <div class="my-ads-product-layout">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                            <div class="my-ads-product-price-title">Title</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
+                            <div class="my-ads-product-price-amount">{{location.searchString}}</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                            <div class="my-ads-product-id-title">Postcode</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
+                            <div class="my-ads-product-id">{{location.postcode}}</div>
+                        </div>
+                    </div>
+                     <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                            <div class="my-ads-product-id-title">Latitude</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
+                            <div class="my-ads-product-id">{{location.lat}}</div>
+                        </div>
+                    </div>
+                     <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                            <div class="my-ads-product-id-title">Longitude</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
+                            <div class="my-ads-product-id">{{location.lon}}</div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="hr"></div>
+                        </div>
+                    </div>
+                    <div class="row form-group my-ads-option-links">
+                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i><a (click)="manageLocation($event, location.id)"><div class="option"> Edit</div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <mat-paginator [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="onPaginateChange($event)">
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="row margin-top-align">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="dashboard-left-sidebar-ul margin-top-align">
+            <li><a class="active" (click)="showManageLocation($event, 0)">Create Location</a></li>
+            <li><a (click)="showLocationList($event)">Location List</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+        <form role="form" (submit)="saveLocation($event)" method="post">
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="edit-profile-heading">Manage Location</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                    <div class="error-message-content">{{errorMessage}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="edit-profile-label">Title</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <input [(ngModel)]="entityLocation.searchString" class="form-control input-custom-field" name="searchString" placeholder="Title" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="edit-profile-label">Post Code</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <input [(ngModel)]="entityLocation.postcode" class="form-control input-custom-field" name="postcode" placeholder="Post Code" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="edit-profile-label">Latitude</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <input [(ngModel)]="entityLocation.lat" class="form-control input-custom-field" name="lat" placeholder="Latitude" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="edit-profile-label">Longitude</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <input [(ngModel)]="entityLocation.lon" class="form-control input-custom-field" name="lon" placeholder="Longitude" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-offset-8 col-sm-4  col-md-offset-8 col-md-4  col-lg-offset-8 col-lg-4">
+                    <button type="submit" id="user-profile-edit-button" class="form-control common-custom-button">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div bsModal #manageLocationSuccessModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left" style="color: #FFF;">Manage Location</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                {{message}}
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

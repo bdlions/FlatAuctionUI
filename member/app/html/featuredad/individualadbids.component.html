@@ -37,7 +37,7 @@
                     <h4 class="featured-ad-label">Guide Price</h4>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-                    <h4 class="featured-ad-label">Ad Bids (p)</h4>
+                    <h4 class="featured-ad-label">Ad Bids (£)</h4>
                 </div>
             </div>
             <div class="row form-group">
@@ -52,18 +52,18 @@
                             <div class="row ">
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                     <div class="radio-inline">
-                                        <input type="radio" name="featured-add-optradio-{{product.id}}" [(ngModel)]="product.isFeaturedAd" [value]="true"><span>Yes</span>
+                                        <input type="radio" name="featured-add-optradio-{{product.id}}" [(ngModel)]="product.isFeaturedAd" [value]="true"><span>Active</span>
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                     <div class="radio-inline">
-                                        <input type="radio" name="featured-add-optradio-{{product.id}}" [(ngModel)]="product.isFeaturedAd" [value]="false"><span>No</span>
+                                        <input type="radio" name="featured-add-optradio-{{product.id}}" [(ngModel)]="product.isFeaturedAd" [value]="false"><span>Inactive</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
-                            <div class="individual-ad-bids-product-title">{{product.title}}</div>
+                            <div>{{product.title}}</div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2  form-group">
                             <span>£{{product.basePrice | number:'.2-2'}}</span>
@@ -73,7 +73,8 @@
                                 <input (change)="setDefaultBid(product, $event)" type="radio" name="ad-bids-optradio-{{product.id}}" [(ngModel)]="product.isDefaultBid" [value]="true"><span>default</span>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8">
-                                <input type="radio" name="ad-bids-optradio-{{product.id}}" [(ngModel)]="product.isDefaultBid" [value]="false"><span>custom</span>  <input *ngIf='!product.isDefaultBid' id="custom-bid" name="custom-bid" type="number"  (ngModelChange)="product.featuredAdBid=$event" [ngModel]="product.featuredAdBid | number:'.2-2'"/> 
+                                <!--<input type="radio" name="ad-bids-optradio-{{product.id}}" [(ngModel)]="product.isDefaultBid" [value]="false"><span>custom</span>  <input *ngIf='!product.isDefaultBid' id="custom-bid" name="custom-bid" type="input"  (ngModelChange)="product.featuredAdBid=$event" [ngModel]="product.featuredAdBid | number:'.2-2'"/>--> 
+                                <input type="radio" name="ad-bids-optradio-{{product.id}}" [(ngModel)]="product.isDefaultBid" [value]="false"><span>custom</span>  <input *ngIf='!product.isDefaultBid' id="custom-bid" name="custom-bid" type="input"  (ngModelChange)="product.featuredAdBid=$event" [ngModel]="product.featuredAdBid"/> 
                             </div>
                         </div>                        
                     </div>

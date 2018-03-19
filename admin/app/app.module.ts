@@ -10,6 +10,9 @@ import {APP_BASE_HREF} from '@angular/common';
 
 import {AdminDashBoardComponent} from './dashboard.component';
 
+import {LocationListComponent} from './location/locationlist.component';
+import {ManageLocationComponent} from './location/managelocation.component';
+
 import {UserListComponent} from './user/userlist.component';
 import {MyProfileComponent} from '../../member/app/profile/myprofile.component';
 import {EditProfileComponent} from '../../member/app/profile/editprofile.component';
@@ -105,6 +108,14 @@ const appRoutes: Routes = [
     {
         path: '',
         component: AdminDashBoardComponent
+    },
+    {
+        path: 'locationlist',
+        component: LocationListComponent
+    },
+    {
+        path: 'managelocation',
+        component: ManageLocationComponent
     },
     {
         path: 'userlist',
@@ -301,6 +312,8 @@ enableProdMode();
          * All are components of the template
          */
         AdminDashBoardComponent,
+        LocationListComponent,
+        ManageLocationComponent,
         UserListComponent,
         AdvertListComponent,         
          

@@ -1,13 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {EntityProduct} from '../../../app/dto/EntityProduct';
+import {EntitySavedProduct} from '../../../app/dto/EntitySavedProduct';
 import {DTOProduct} from '../../../app/dto/DTOProduct';
 import {EntityRole} from '../../../app/dto/EntityRole';
 import {WebAPIService} from '../../../app/webservice/web-api-service';
 import {PacketHeaderFactory} from '../../../app/webservice/PacketHeaderFactory';
 import {ACTION} from '../../../app/webservice/ACTION';
 import {PageEvent} from '@angular/material';
+import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
     selector: 'app',
@@ -21,6 +23,8 @@ export class SavedAdsComponent{
     private reqDTOProduct: DTOProduct;
     private subscribe:Subscription;
     private userId: number = 0;
+    private message: string;
+    @ViewChild('savedAdSuccessModal') public savedAdSuccessModal:ModalDirective;
     
     // MatPaginator Inputs
     length = 0;
@@ -28,6 +32,7 @@ export class SavedAdsComponent{
     pageSizeOptions = [5, 10];
     constructor(public router:Router, public route: ActivatedRoute, webAPIService: WebAPIService) {        
         this.webAPIService = webAPIService;   
+        setInterval(() => { this.savedAdSuccessModal.hide(); }, 1000 * 5);
         this.fetchUserRoles();     
     }
     
@@ -42,6 +47,10 @@ export class SavedAdsComponent{
             this.reqDTOProduct.limit = 10;
             this.fetchSavedProductList();
         });
+    }
+    
+    public hideChildModal(): void {
+        this.savedAdSuccessModal.hide();
     }
 
     fetchUserRoles()
@@ -78,6 +87,26 @@ export class SavedAdsComponent{
         this.reqDTOProduct.limit = event.pageSize;
         this.reqDTOProduct.offset = (event.pageIndex * event.pageSize) ;
         this.fetchSavedProductList();
+    }
+    
+    removeSavedAd(event: Event, id: number){
+        let entitySavedProduct: EntitySavedProduct = new EntitySavedProduct();
+        entitySavedProduct.userId = this.userId;
+        entitySavedProduct.productId = id;
+        let requestBody: string = JSON.stringify(entitySavedProduct);
+        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.REMOVE_SAVED_PRODUCT), requestBody).then(result => {
+            if(result.success)
+            {
+                this.message = result.message;
+                this.savedAdSuccessModal.show();
+                this.reqDTOProduct = new DTOProduct();
+                this.reqDTOProduct.entityProduct = new EntityProduct();
+                this.reqDTOProduct.entityProduct.userId = this.userId;
+                this.reqDTOProduct.offset = 0;
+                this.reqDTOProduct.limit = 10;
+                this.fetchSavedProductList();
+            }
+        });        
     }
     
     showAd(event: Event, id: number){

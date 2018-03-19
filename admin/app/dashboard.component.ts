@@ -31,6 +31,12 @@ export class AdminDashBoardComponent
         this.router.navigate(["advertlist"]);
     }
     
+    locationList(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["locationlist"]);
+    }
+    
     
     /*myads(event: Event)
     {

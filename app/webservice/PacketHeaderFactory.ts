@@ -154,6 +154,10 @@ export class PacketHeaderFactory {
             case ACTION.UPDATE_AD_BIDS:
                 packetHeader.requestType = REQUEST_TYPE.UPDATE
                 break;
+                
+            case ACTION.REMOVE_SAVED_PRODUCT:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break;
             
             //Only For Admin
             case ACTION.FETCH_USER_LIST:
@@ -162,9 +166,19 @@ export class PacketHeaderFactory {
             case ACTION.FETCH_PRODUCT_LIST:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST
                 break;
+            case ACTION.FETCH_LOCATIONS:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break;
+            case ACTION.ADD_LOCATION:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break;
+            case ACTION.FETCH_LOCATION_INFO:
+                packetHeader.requestType = REQUEST_TYPE.REQUEST
+                break;
             
-            
-            
+            case ACTION.UPDATE_LOCATION:
+                packetHeader.requestType = REQUEST_TYPE.UPDATE
+                break;
             
             
                 

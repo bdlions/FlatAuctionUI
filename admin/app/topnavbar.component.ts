@@ -25,6 +25,24 @@ export class TopNavbarComponent {
         this.router.navigate(["dashboard"]);
     }
     
+    goUsers(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["userlist"]);
+    }
+    
+    goAdverts(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["advertlist"]);
+    }
+    
+    goLocations(event: Event)
+    {
+        event.preventDefault();
+        this.router.navigate(["locationlist"]);
+    }
+    
     
     /*goToMyhome(event: Event)
     {

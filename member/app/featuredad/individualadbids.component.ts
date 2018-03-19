@@ -79,11 +79,11 @@ export class IndividualAdBidsComponent implements OnInit, OnDestroy {
             {
                 if (this.productList[counter].isDefaultBid)
                 {
-                    this.productList[counter].featuredAdBid = this.entityAccountSettingsFA.chargePerClick * 100;
+                    this.productList[counter].featuredAdBid = this.entityAccountSettingsFA.chargePerClick;
                 }
                 else
                 {
-                    this.productList[counter].featuredAdBid = this.productList[counter].featuredAdBid * 100;
+                    this.productList[counter].featuredAdBid = this.productList[counter].featuredAdBid;
                 }
             }
             this.length = result.counter;
@@ -124,17 +124,17 @@ export class IndividualAdBidsComponent implements OnInit, OnDestroy {
         {
             if (this.productList[counter].id == entityProduct.id)
             {
-                this.productList[counter].featuredAdBid = this.entityAccountSettingsFA.chargePerClick*100;
+                this.productList[counter].featuredAdBid = this.entityAccountSettingsFA.chargePerClick;
             }
         }
     }
     
     updateAdBids(event: Event)
     {
-        for (let counter: number = 0; counter < this.productList.length; counter++)
-        {
-            this.productList[counter].featuredAdBid = this.productList[counter].featuredAdBid / 100;
-        }
+//        for (let counter: number = 0; counter < this.productList.length; counter++)
+//        {
+//            this.productList[counter].featuredAdBid = this.productList[counter].featuredAdBid / 100;
+//        }
         //call api to update product list and after success convert featuredAdBid from pound to p
         let dtoAdBid: DTOAdBid = new DTOAdBid();
         dtoAdBid.entityProductList = this.productList;
@@ -142,10 +142,10 @@ export class IndividualAdBidsComponent implements OnInit, OnDestroy {
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.UPDATE_AD_BIDS), requestBody).then(result => {
             this.message = result.message;
             this.individualAdbidsModal.show();
-            for (let counter: number = 0; counter < this.productList.length; counter++)
-            {
-                this.productList[counter].featuredAdBid = this.productList[counter].featuredAdBid * 100;
-            }
+//            for (let counter: number = 0; counter < this.productList.length; counter++)
+//            {
+//                this.productList[counter].featuredAdBid = this.productList[counter].featuredAdBid * 100;
+//            }
         });
     }
     
