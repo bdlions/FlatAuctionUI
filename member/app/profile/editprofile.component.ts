@@ -24,9 +24,11 @@ export class EditProfileComponent {
     private confirmPassword: string;
     private errorMessage: string = "";
     private userId: number = 0;
+    private isAdmin: boolean = false;
     
     constructor(public router:Router, public route: ActivatedRoute,  public http: Http, webAPIService: WebAPIService) {
         this.webAPIService = webAPIService;
+        this.fetchUserRoles();
     }
     
     ngOnInit() {
@@ -41,6 +43,27 @@ export class EditProfileComponent {
             
             this.userId = params['id'];
             this.fetchMemberRoles();
+        });
+    }
+    
+    fetchUserRoles()
+    {
+        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.FETCH_USER_ROLES), "{}").then(result => {
+            if (result != null && result.success)
+            {
+                let roles: EntityRole[] = result.list;
+                if (roles != null && roles.length > 0)
+                {
+                    for (let counter = 0; counter < roles.length; counter++)
+                    {
+                        if (roles[counter].id == 1)
+                        {
+                            //admin has role id 1
+                            this.isAdmin = true;
+                        }
+                    }
+                }         
+            }            
         });
     }
     
@@ -131,7 +154,7 @@ export class EditProfileComponent {
         let requestBody: string = JSON.stringify(this.dtoUser);
         this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.UPDATE_USER_INFO), requestBody).then(result =>{
             if (result != null && result.success){
-                this.router.navigate(['myprofile']);
+                this.router.navigate(['myprofile', {id: this.userId }]);
             }
             else if (result != null && result.false){
                 this.errorMessage = result.message;

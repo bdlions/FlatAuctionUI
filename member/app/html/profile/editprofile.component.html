@@ -128,6 +128,23 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="isAdmin" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <h5 class="create-ad-label">Verify Profile</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                            <div>
+                                <p><input type="checkbox"
+                                     [(ngModel)]="dtoUser.entityUser.isVerified"
+                                     name="isVerified"
+                                     [checked]="dtoUser.entityUser.isVerified"
+                                     />
+                                </p>
+                           </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row form-group">
                 <div class="col-xs-12 col-sm-offset-8 col-sm-4  col-md-offset-8 col-md-4  col-lg-offset-8 col-lg-4">
