@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Http} from '@angular/http';
+import {Subscription} from 'rxjs';
 import {EntityRole} from './../dto/EntityRole';
 import {WebAPIService} from './../webservice/web-api-service';
 import {PacketHeaderFactory} from './../webservice/PacketHeaderFactory';
@@ -17,8 +18,9 @@ export class LoginComponent {
     private webAPIService: WebAPIService;
     private errorMsg:string;
     private msg:string;
+    private subscribe: Subscription;
     
-    constructor(public router: Router, public http: Http, webAPIService: WebAPIService) {
+    constructor(public router: Router, public route: ActivatedRoute, public http: Http, webAPIService: WebAPIService) {
         this.webAPIService = webAPIService;
         
         let msg = localStorage.getItem("msg");
@@ -34,6 +36,22 @@ export class LoginComponent {
         if (username != null && username != "" && password != null && password != ""){
             this.loginUser(username,password);
         }
+    }
+    
+    ngOnInit() 
+    {
+        this.subscribe = this.route.params.subscribe(params => {
+            let id: number = params['id']; 
+            if(id != null && id == 1)
+            {
+                this.msg = "Congratulation! You have activated your account. Please login to your account.";
+            }
+            if(id != null && id == 2)
+            {
+                this.errorMsg = "Invalid code to activate your account.";
+            }
+            
+        });
     }
   
     login(event: Event, username: string, password: string) {

@@ -202,7 +202,27 @@ export class SearchMapComponent implements OnInit, OnDestroy {
                 {
                     if (tempProductList[counter].images != null)
                     {
-                        tempProductList[counter].imageArray = tempProductList[counter].images.split(",");
+                        let tempImageArray: string[] = tempProductList[counter].images.split(",");                        
+                        if (tempImageArray != null && tempImageArray.length > 0)
+                        {
+                            //displaying maximum two images at right column of list view
+                            let displayImageArray: string[] = Array();
+                            let limit: number = 1;
+                            if(tempImageArray.length > 1)
+                            {
+                                limit = 2;
+                            }
+                            for (let tempCounter: number = 0; tempCounter < limit; tempCounter++)
+                            {
+                                displayImageArray[displayImageArray.length] = tempImageArray[tempCounter];
+                            }
+                            tempProductList[counter].imageArray = displayImageArray;
+                        }
+                        else
+                        {
+                            tempProductList[counter].imageArray = Array();
+                        }
+                        //tempProductList[counter].imageArray = tempProductList[counter].images.split(",");
                     }                    
                 }
                 this.productList = tempProductList;                
