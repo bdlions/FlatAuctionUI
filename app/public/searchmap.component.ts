@@ -73,6 +73,7 @@ export class SearchMapComponent implements OnInit, OnDestroy {
     private availabilityList: EntityAvailability[];
 
     private subscribe: Subscription;
+    private keyword: string = "";
     private id: number;
     private title: string = 'Property locations';
     private lat: number = 51.541351;
@@ -94,17 +95,12 @@ export class SearchMapComponent implements OnInit, OnDestroy {
     constructor(public router: Router, public route: ActivatedRoute, webAPIService: WebAPIService) {
 
         this.webAPIService = webAPIService;
-        
-        this.dtoSearchParam = new DTOSearchParam();
-        
         this.entitySavedProduct = new EntitySavedProduct();
         
         this.priceList = Array();
         this.priceList = JSON.parse("[{\"id\":\"100\",\"title\":\"100\"}, {\"id\":\"200\",\"title\":\"200\"}, {\"id\":\"300\",\"title\":\"300\"}, {\"id\":\"400\",\"title\":\"400\"}, {\"id\":\"500\",\"title\":\"500\"}]");
         this.selectedMinPrice = new Common();
         this.selectedMaxPrice = new Common();
-        
-        this.productList = Array();
         
         //this.selectedLocation = new EntityLocation();
         this.locationList = Array();
@@ -129,8 +125,15 @@ export class SearchMapComponent implements OnInit, OnDestroy {
         this.fetchProductTypeList();
         this.fetchOccupationList();
         this.fetchPetList();
-        this.fetchAvailabilityList();
+        this.fetchAvailabilityList();        
         
+        setInterval(() => {this.searchModal.hide(); }, 1000 * 5);
+    }
+    
+    ngOnInit() {
+//        this.sebmGoogMap.triggerResize();
+        this.productList = Array();
+        this.dtoSearchParam = new DTOSearchParam();
         let referenceId = localStorage.getItem("referenceId");
         if (referenceId != null && referenceId != ""){
             this.dtoSearchParam.referenceId = referenceId;
@@ -171,24 +174,17 @@ export class SearchMapComponent implements OnInit, OnDestroy {
             this.dtoSearchParam.maxPrice = +maxPrice;
             localStorage.removeItem("maxPrice");
         }
-        
+        this.subscribe = this.route.params.subscribe(params => {
+            this.keyword = params['id']; 
+            if (this.keyword != null && this.keyword != "")
+            {
+                this.dtoSearchParam.locationTitle = this.keyword;
+                this.dtoSearchParam.postcode = this.keyword;
+            }
+        });
         this.dtoSearchParam.offset = 0;
         this.dtoSearchParam.limit = 10;         
-        this.fetchProductList(); 
-        
-        //console.log(this.productList);
-        setInterval(() => {this.searchModal.hide(); }, 1000 * 5);
-
-    }
-    
-    ngOnInit() {
-//        this.sebmGoogMap.triggerResize();
-        this.subscribe = this.route.params.subscribe(params => {
-            //this.id = params['id']; 
-//            this.dtoSearchParam.offset = 0;
-//            this.dtoSearchParam.limit = 10;         
-//            this.fetchProductList();         
-        });
+        this.fetchProductList();
     }
 
     ngOnDestroy() {

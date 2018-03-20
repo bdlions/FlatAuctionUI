@@ -1034,6 +1034,7 @@ export class ManageAdComponent {
         {
             this.product.locationId = this.selectedLocation.id;
             this.product.locationTitle = this.selectedLocation.searchString;
+            this.product.postcode = this.selectedLocation.postcode;
             this.product.lat = this.selectedLocation.lat;
             this.product.lon = this.selectedLocation.lon;
         }

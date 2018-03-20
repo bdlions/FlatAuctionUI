@@ -108,7 +108,7 @@ export class HomeComponent {
         this.router.navigate(['showad', {id: id }]);
     }
     
-    search(event: Event, id: number) {
+    search(event: Event, id: string) {
         event.preventDefault();
         this.router.navigate(['search', {id: id}]);
     }

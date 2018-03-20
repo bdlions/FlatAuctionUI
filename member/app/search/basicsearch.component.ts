@@ -73,7 +73,7 @@ export class BasicSearchComponent{
         });
     }
     
-    search(event: Event) {
+    search(event: Event, id: string) {
         event.preventDefault();
         if (this.dtoSearchParam.referenceId != null && this.dtoSearchParam.referenceId != "")
         {
@@ -99,7 +99,7 @@ export class BasicSearchComponent{
 //        }
         //let id:number;
         //id = 1;
-        this.router.navigate(['search']);
+        this.router.navigate(['search', {id: id}]);
     }
     
     basicsearch(event: Event) {

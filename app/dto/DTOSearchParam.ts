@@ -9,4 +9,6 @@ export class DTOSearchParam {
     availabilityId: number;
     minPrice: number;
     maxPrice: number;
+    locationTitle: string;
+    postcode: string;
 }

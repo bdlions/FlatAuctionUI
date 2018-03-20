@@ -20,6 +20,7 @@ export class EntityProduct {
     petTitle: string;
     locationId: number;
     locationTitle: string;
+    postcode: string;
     lat: number;
     lon: number;
     amenityIds: string;

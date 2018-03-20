@@ -11,7 +11,7 @@
                 <h2 class="advanced-search-header">Advanced Search</h2>
             </div>
         </div>
-        <form autocomplete="off" role="form" (submit)="search($event)">
+        <form autocomplete="off" role="form" (submit)="search($event, locationSelector.value)">
             <div class="row form-group">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 form-group">
                     <h3 class="advanced-search-selection-title">Search Location</h3>

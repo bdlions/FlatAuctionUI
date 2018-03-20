@@ -168,7 +168,7 @@ export class AppComponent {
         this.router.navigate(["signup"]);
     }
     
-    search(event: Event, id: number) {
+    search(event: Event, id: string) {
         event.preventDefault();
         //clear all search params if necessary
         this.router.navigate(['search', {id: id}]);
