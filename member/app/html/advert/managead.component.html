@@ -29,7 +29,7 @@
     <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9">
         <div class="row form-group">
             <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
-                <h3 class="create-ad-heading">Create Your Advertise</h3>
+                <h3 class="create-ad-heading">Create Your Advertisement</h3>
             </div>
         </div>
     </div>
@@ -61,11 +61,11 @@
                                                 <h5 class="create-ad-label">I have for Rent</h5>
                                             </div>
                                             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                                <select [(ngModel)]="selectedProductCategory" name="selectedProductCategory" class="form-control select-custom-field">
-                                                    <option *ngFor="let productCategory of productCategoryList" [ngValue]="productCategory">{{productCategory.title}}</option>
+                                                <select [(ngModel)]="selectedProductType" name="productType" class="form-control select-custom-field">
+                                                    <option *ngFor="let productType of productTypeList" [ngValue]="productType">{{productType.title}}</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div>                                        
                                         <div class="row form-group">
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                                 <h5 class="create-ad-label">Size of property</h5>
@@ -81,8 +81,8 @@
                                                 <h5 class="create-ad-label">Type of property</h5>
                                             </div>
                                             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                                <select [(ngModel)]="selectedProductType" name="productType" class="form-control select-custom-field">
-                                                    <option *ngFor="let productType of productTypeList" [ngValue]="productType">{{productType.title}}</option>
+                                                <select [(ngModel)]="selectedProductCategory" name="selectedProductCategory" class="form-control select-custom-field">
+                                                    <option *ngFor="let productCategory of productCategoryList" [ngValue]="productCategory">{{productCategory.title}}</option>
                                                 </select>
                                             </div>
                                         </div>
