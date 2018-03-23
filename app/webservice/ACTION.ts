@@ -3,6 +3,7 @@ export enum ACTION{
     SIGN_OUT = 1002,
     SIGN_UP = 1003,
     FORGET_PASSWORD = 1004,
+    SIGN_IN_FB_CODE = 1005,
     
     FETCH_USER_INFO = 2001,
     FETCH_MEMBER_ROLES = 2002,

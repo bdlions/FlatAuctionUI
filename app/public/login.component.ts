@@ -46,12 +46,63 @@ export class LoginComponent {
             {
                 this.msg = "Congratulation! You have activated your account. Please login to your account.";
             }
-            if(id != null && id == 2)
+            else if(id != null && id == 2)
             {
                 this.errorMsg = "Invalid code to activate your account.";
             }
-            
+            else if(id != null && id == 3)
+            {
+                this.errorMsg = "Invalid code to login via facebook.";
+            }
+            else if(id != null && id == 4)
+            {
+                this.errorMsg = "Invalid token to login via facebook.";
+            }
+            else if(id != null && id == 5)
+            {
+                let code: string = params['code']; 
+                if(code != null && code != "")
+                {
+                    this.loginUserFBCode(code);     
+                }
+            }
+            else if(id != null && id == 6)
+            {
+                this.errorMsg = "Unaable to access email from facebook account.";
+            }
+            else if(id != null && id == 7)
+            {
+                this.errorMsg = "Unaable to login via facebook.";
+            }
         });
+    }
+    
+    loginUserFBCode(fbCode:string){
+        let requestBody: string = "{\"fbCode\": \"" + fbCode + "\"}";
+        
+        this.webAPIService.getResponse(PacketHeaderFactory.getHeader(ACTION.SIGN_IN_FB_CODE), requestBody).then(result =>{
+            if (result != null && result.success){
+                if (result.sessionId != null && result.sessionId != ""){
+                    //we don't have email and password, so can't set it in local storage here
+                    //if login page is loaded then auto login will not happen
+                    localStorage.setItem("sessionId", result.sessionId);                    
+                    this.fetchUserRoles();
+                }
+                else{
+                    localStorage.removeItem("sessionId");
+                    this.errorMsg = "Invalid session.";
+                }
+            }
+            else if (result != null && !result.success)
+            {
+                this.errorMsg = result.message;
+            }
+            else
+            {
+                this.errorMsg = "Server is unavailable. Please try again later.";
+            }
+        });       
+        
     }
   
     login(event: Event, username: string, password: string) {

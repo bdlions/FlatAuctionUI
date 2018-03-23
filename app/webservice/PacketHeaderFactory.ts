@@ -29,6 +29,9 @@ export class PacketHeaderFactory {
             case ACTION.FORGET_PASSWORD:
                 packetHeader.requestType = REQUEST_TYPE.AUTH
                 break;
+            case ACTION.SIGN_IN_FB_CODE:
+                packetHeader.requestType = REQUEST_TYPE.AUTH
+                break;
             
             case ACTION.FETCH_USER_INFO:
                 packetHeader.requestType = REQUEST_TYPE.REQUEST

@@ -3,6 +3,7 @@ export class EntityUser {
     userName: string;
     email: string;
     password: string;
+    fbCode: string;
     firstName: string;
     lastName: string;
     img: string;
