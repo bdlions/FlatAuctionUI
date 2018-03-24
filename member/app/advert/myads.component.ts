@@ -114,6 +114,21 @@ export class MyAdsComponent{
     individualadbids(event: Event) {
         event.preventDefault();
         this.router.navigate(['individualadbids', {userId: this.userId }]);
+    }
+    
+    stats(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['stats', {userId: this.userId }]);
+    } 
+    
+    ranking(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['ranking', {userId: this.userId }]);
+    }
+    
+    faqfa(event: Event) {
+        event.preventDefault();
+        this.router.navigate(['faqfa', {userId: this.userId }]);
     } 
     
     /*public myproduct(event: Event, id: number){

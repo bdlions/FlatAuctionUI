@@ -50,6 +50,9 @@ import {AdvancedSearchComponent} from './search/advancedsearch.component';
 
 import {AccountSettingsFA} from '../../member/app/featuredad/accountsettingsfa.component';
 import {IndividualAdBidsComponent} from '../../member/app/featuredad/individualadbids.component';
+import {RankingComponent} from '../../member/app/featuredad/ranking.component';
+import {StatsComponent} from '../../member/app/featuredad/stats.component';
+import {FaqfaComponent} from '../../member/app/featuredad/faqfa.component';
 
 import {AppTemplate} from './app.template';
 import {TopNavbarComponent} from './topnavbar.component';
@@ -234,6 +237,18 @@ const appRoutes: Routes = [
         component: IndividualAdBidsComponent
     },
     {
+        path: 'ranking',
+        component: RankingComponent
+    },
+    {
+        path: 'stats',
+        component: StatsComponent
+    },
+    {
+        path: 'faqfa',
+        component: FaqfaComponent
+    },
+    {
         path: '**',
         component: AdminDashBoardComponent
     },
@@ -350,6 +365,9 @@ enableProdMode();
         
         AccountSettingsFA,
         IndividualAdBidsComponent,
+        RankingComponent,
+        StatsComponent,
+        FaqfaComponent,
 
         TopNavbarComponent,
         FooterComponent,

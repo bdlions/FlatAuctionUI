@@ -42,6 +42,9 @@ import {AdvancedSearchComponent} from './search/advancedsearch.component';
 
 import {AccountSettingsFA} from './featuredad/accountsettingsfa.component';
 import {IndividualAdBidsComponent} from './featuredad/individualadbids.component';
+import {RankingComponent} from './featuredad/ranking.component';
+import {StatsComponent} from './featuredad/stats.component';
+import {FaqfaComponent} from './featuredad/faqfa.component';
 
 import {DemoPaypalComponent} from './demopaypal.component';
 import {DemoWorldPayComponent} from './demoworldpay.component';
@@ -213,6 +216,18 @@ const appRoutes: Routes = [
         component: IndividualAdBidsComponent
     },
     {
+        path: 'ranking',
+        component: RankingComponent
+    },
+    {
+        path: 'stats',
+        component: StatsComponent
+    },
+    {
+        path: 'faqfa',
+        component: FaqfaComponent
+    },
+    {
         path: 'demopaypal',
         component: DemoPaypalComponent
     },
@@ -332,6 +347,9 @@ enableProdMode();
         
         AccountSettingsFA,
         IndividualAdBidsComponent,
+        RankingComponent,
+        StatsComponent,
+        FaqfaComponent,
         
         DemoPaypalComponent,
         DemoWorldPayComponent,

@@ -1,0 +1,29 @@
+<div class="row margin-top-align">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="featured-ad-left-sidebar-ul">
+            <li *ngIf='!isAdmin'><a (click)="manageAd($event, 0)">Create Ads</a></li>
+            <li><a (click)="myAds($event)">My Ads</a></li>
+            <li><a (click)="savedAds($event)">Saved Ads</a></li>
+            <li><ul class="nav nav-pills nav-stacked" id="stacked-menu">
+                    <li>
+                        <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p1">Featured Ads <span class="caret"></span></a>          
+                        <ul class="nav nav-pills nav-stacked collapse in" id="p1" aria-expanded="true">
+                            <li><a (click)="accountSettingsFA($event)">Account Settings</a></li>
+                            <li><a (click)="individualadbids($event)">Individual Ad Bids</a></li>
+                            <li><a (click)="stats($event)">Stats</a></li>
+                            <li><a (click)="ranking($event)">Ranking</a></li>
+                            <li><a class="active" (click)="faqfa($event)">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="featured-ad-heading">FAQ</h2>
+            </div>
+        </div>               
+    </div>
+</div>

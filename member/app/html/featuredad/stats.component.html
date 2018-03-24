@@ -1,0 +1,177 @@
+<div class="row margin-top-align">
+    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 form-group">
+        <ul class="featured-ad-left-sidebar-ul">
+            <li *ngIf='!isAdmin'><a (click)="manageAd($event, 0)">Create Ads</a></li>
+            <li><a (click)="myAds($event)">My Ads</a></li>
+            <li><a (click)="savedAds($event)">Saved Ads</a></li>
+            <li><ul class="nav nav-pills nav-stacked" id="stacked-menu">
+                    <li>
+                        <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p1">Featured Ads <span class="caret"></span></a>          
+                        <ul class="nav nav-pills nav-stacked collapse in" id="p1" aria-expanded="true">
+                            <li><a (click)="accountSettingsFA($event)">Account Settings</a></li>
+                            <li><a (click)="individualadbids($event)">Individual Ad Bids</a></li>
+                            <li><a class="active" (click)="stats($event)">Stats</a></li>
+                            <li><a (click)="ranking($event)">Ranking</a></li>
+                            <li><a (click)="faqfa($event)">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="featured-ad-stats-layout">
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="featured-ad-heading">Featured Ad Statistics</h2>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 form-group">
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h5 class="featured-ad-label"> Select an Advert to view its statistics...</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <select class="form-control select-custom-field">
+                                <option></option>
+                            </select> 
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h5 class="featured-ad-label">From</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+<!--                            <input class="form-control input-custom-field" type="text" 
+                                   [ngModel]="fromDate | date:'yyyy-MM-dd'" (ngModelChange)="fromDate = $event;"
+                                   (focus)="showDatePicker = true" >
+
+                                   <div class="start-date" *ngIf="showDatePicker" >
+                                <datepicker [(ngModel)]="fromDate" [minDate]="minDate" [showWeeks]="false" (selectionDone) ="showDatePicker = false"  ></datepicker>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h5 class="featured-ad-label">To</h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+<!--                            <input class="form-control input-custom-field" type="text" 
+                                   [ngModel]="toDate | date:'yyyy-MM-dd'" (ngModelChange)="toDate = $event;"
+                                   (focus)="showToDatePicker = true" >
+
+                                   <div class="start-date" *ngIf="showToDatePicker" >
+                                <datepicker [(ngModel)]="toDate" [minDate]="minDate" [showWeeks]="false" (selectionDone) ="showToDatePicker = false"  ></datepicker>
+                            </div>-->
+                        </div>
+<!--                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <input class="form-control input-custom-field" type="text" id="datepicker">
+                        </div>-->
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-offset-6 col-md-6 col-lg-6">
+                            <button id="view-stats-button" class="form-control common-custom-button">View Stats</button>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <table class="featured-ad-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Clicks</th>
+                                        <th>Impressions</th>
+                                        <th>CTR</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Date"></td>
+                                        <td data-label="Clicks"></td>
+                                        <td data-label="Impressions"></td>
+                                        <td data-label="CTR"></td>
+                                        <td data-label="Cost"></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date"></td>
+                                        <td data-label="Clicks"></td>
+                                        <td data-label="Impressions"></td>
+                                        <td data-label="CTR"></td>
+                                        <td data-label="Cost"></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date"></td>
+                                        <td data-label="Clicks"></td>
+                                        <td data-label="Impressions"></td>
+                                        <td data-label="CTR"></td>
+                                        <td data-label="Cost"></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date"></td>
+                                        <td data-label="Clicks"></td>
+                                        <td data-label="Impressions"></td>
+                                        <td data-label="CTR"></td>
+                                        <td data-label="Cost"></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Date"></td>
+                                        <td data-label="Clicks"></td>
+                                        <td data-label="Impressions"></td>
+                                        <td data-label="CTR"></td>
+                                        <td data-label="Cost"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h4 class="featured-ad-stats-account-summary-title">Account summary</h4>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="featured-ad-stats-account-summary-layout">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h5 class="featured-ad-stats-account-summary-title">Total Balance</h5>
+                                        <h5 class="featured-ad-stats-account-summary-content"></h5>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h5 class="featured-ad-stats-account-summary-title">Daily Budget</h5>
+                                        <h5 class="featured-ad-stats-account-summary-content"></h5>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h5 class="featured-ad-stats-account-summary-title">Default Bid</h5>
+                                        <h5 class="featured-ad-stats-account-summary-content"></h5>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h5 class="featured-ad-stats-account-summary-title">Spent Today</h5>
+                                        <h5 class="featured-ad-stats-account-summary-content"></h5>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h5 class="featured-ad-stats-account-summary-title">Left Today</h5>
+                                        <h5 class="featured-ad-stats-account-summary-content"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
