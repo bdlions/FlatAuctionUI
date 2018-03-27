@@ -189,6 +189,10 @@ export class SearchComponent implements OnInit, OnDestroy {
                 this.dtoSearchParam.locationTitle = this.keyword;
                 this.dtoSearchParam.postcode = this.keyword;
             }
+            else
+            {
+                this.keyword = "";
+            }
         });
         this.dtoSearchParam.offset = 0;
         this.dtoSearchParam.limit = 10;         

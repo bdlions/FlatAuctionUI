@@ -299,10 +299,22 @@
                             </div>
                         </section>
                         <input name="tabbed" id="tabbed3" type="radio">
-                        <section>
-
+                        <section (click)="showAdMap($event, productInfo.id)">
                             <h1>
-                                <label for="tabbed3">Message</label>
+                                <label for="tabbed3">Map</label>
+                            </h1>
+                            <div class="tabbed-content">
+                                <div class="row form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="hr"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <input name="tabbed" id="tabbed4" type="radio">
+                        <section>
+                            <h1>
+                                <label for="tabbed4">Message</label>
                             </h1>
                             <div class="tabbed-content">
                                 <div class="row form-group">

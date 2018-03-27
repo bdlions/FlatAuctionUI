@@ -16,6 +16,7 @@ import {SearchComponent} from './public/search.component';
 import {SearchMapComponent} from './public/searchmap.component';
 
 import {ProductComponent} from './public/product.component';
+import {ProductMapComponent} from './public/productmap.component';
 import {BidsComponent} from './public/bids.component';
 
 import {AboutComponent} from './common/about.component';
@@ -139,6 +140,10 @@ const appRoutes: Routes = [
         component: ProductComponent
     },
     {
+        path: 'showadmap',
+        component: ProductMapComponent
+    },
+    {
         path: 'showbids',
         component: BidsComponent
     },
@@ -242,6 +247,7 @@ enableProdMode();
         
         HomeComponent,
         ProductComponent,
+        ProductMapComponent,
         BidsComponent,
         
         ProfileComponent,

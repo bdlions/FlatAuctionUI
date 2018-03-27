@@ -1,0 +1,47 @@
+<div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="product-info-details-right-panel form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <a (click)="showAd($event, entityProduct.id)"><h1 class="product-info-details-right-panel-product-title">{{entityProduct.title}}</h1></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <h1 class="product-info-details-right-panel-product-price">Guide Price £{{entityProduct?.basePrice | number:'.2-2'}} </h1>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="row form-group">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="panel with-nav-tabs panel-primary custom-panel">
+                <div class="panel-heading custom-panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#map" data-toggle="tab" (click)="showMap = true;doTriggerResize()">
+                               <i class="fa fa-map-marker" aria-hidden="true"></i> Map
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel-body custom-panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="map">
+                            <h1>{{ title }}</h1>
+
+                            <!-- this creates a google map on the page with the given lat/lng from -->
+                            <!-- the component as the initial center of the map: -->
+
+<!--                            <sebm-google-map [latitude]="lat" [longitude]="lng">
+                                <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+                            </sebm-google-map>-->
+                            <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker [latitude]="entityProduct.lat" [longitude]="entityProduct.lon"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

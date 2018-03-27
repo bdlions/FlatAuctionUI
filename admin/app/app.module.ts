@@ -22,6 +22,7 @@ import {UploadDocumentComponent} from '../../member/app/profile/uploaddocument.c
 
 import {AdvertListComponent} from './advert/advertlist.component';
 import {ProductComponent} from '../../app/public/product.component';
+import {ProductMapComponent} from '../../app/public/productmap.component';
 import {ManageAdComponent} from '../../member/app/advert/managead.component';
 import {AutoBidsComponent} from '../../app/public/autobids.component';
 import {BidsComponent} from '../../app/public/bids.component';
@@ -151,6 +152,10 @@ const appRoutes: Routes = [
     {
         path: 'showad',
         component: ProductComponent
+    },
+    {
+        path: 'showadmap',
+        component: ProductMapComponent
     },
     {
         path: 'managead',
@@ -345,6 +350,7 @@ enableProdMode();
         MyAdsComponent,
         SavedAdsComponent,
         ProductComponent,
+        ProductMapComponent,
         AutoBidsComponent,
         BidsComponent,
         

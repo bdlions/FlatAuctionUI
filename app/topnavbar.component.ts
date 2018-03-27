@@ -38,7 +38,7 @@ export class TopNavbarComponent {
         event.preventDefault();
         this.navigationManager.showNavBar(true);
         this.navigationManager.setActiveMenu("search");
-        this.router.navigate(["search"]);
+        this.router.navigate(["search", {id: ""}]);
     }
 
     goToAboutus(event: Event) {

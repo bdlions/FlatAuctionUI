@@ -23,6 +23,7 @@ import {ManageAdComponent} from './advert/managead.component';
 import {MyAdsComponent} from './advert/myads.component';
 import {SavedAdsComponent} from './advert/savedads.component';
 import {ProductComponent} from '../../app/public/product.component';
+import {ProductMapComponent} from '../../app/public/productmap.component';
 import {BidsComponent} from '../../app/public/bids.component';
 
 import {AccountComponent} from './account.component';
@@ -146,6 +147,10 @@ const appRoutes: Routes = [
     {
         path: 'showad',
         component: ProductComponent
+    },
+    {
+        path: 'showadmap',
+        component: ProductMapComponent
     },
     {
         path: 'showbids',
@@ -328,6 +333,7 @@ enableProdMode();
         MyAdsComponent,
         SavedAdsComponent,
         ProductComponent,
+        ProductMapComponent,
         BidsComponent,
         
         InboxComponent,

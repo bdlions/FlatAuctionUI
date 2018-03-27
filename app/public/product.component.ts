@@ -363,6 +363,11 @@ export class ProductComponent implements OnInit, OnDestroy {
         
     }
     
+    public showAdMap(event: Event, id: number){
+        event.preventDefault();
+        this.router.navigate(['showadmap', {id: id }]);
+    }
+    
     /*
 
     
